@@ -109,20 +109,22 @@
 <%--        </div>--%>
 <%--    </div>--%>
     <h3 style="margin-top: 20px; margin-bottom: 20px">Địa điểm nổi bật</h3>
-    <% int i=0; %>;
+
 
     <div>
        <table>
            <tr>
-               <td>Stt</td>
+
                <td>Tên bài viết</td>
+               <td>sao</td>
                <td>Ngày đăng</td>
            </tr>
            <C:forEach var="review" items="${listReview}">
                <tr>
-                   <td>++i</td>
-                   <td><a href="">${review.getName()}</a></td>
-                   <td><a href="">${review.getDatePost()}</a></td>
+
+                   <td><a href="/review?id=${review.getId_review()}">${review.getName()}</a></td>
+                   <td><img src="../img/star.png" width="20px" height="20">${review.getStar()}</td>
+                   <td>${review.getDatePost()}</td>
                </tr>
            </C:forEach>
        </table>

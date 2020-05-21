@@ -16,11 +16,13 @@ import java.util.List;
 public class SearchServlet extends HttpServlet {
     ReviewDetails reviewDetails = new ReviewDetails();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         findByName(request,response);
     }
 
     private void findByName(HttpServletRequest request, HttpServletResponse response) {
-        String name = ""+ request.getParameter("name");
+        String name = ""+ request.getParameter("inputName");
         List<Review> listReview = reviewDetails.selectByName(name);
         request.setAttribute("listReview",listReview);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/search.jsp");
@@ -34,15 +36,8 @@ public class SearchServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null)
-            action = "";
+        findByDate(request,response);
 
-        switch(action) {
-            default:
-                findByDate(request,response);
-                break;
-        }
 
     }
 

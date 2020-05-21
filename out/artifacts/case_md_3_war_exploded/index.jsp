@@ -36,7 +36,7 @@
         </button>
         <div class="collapse navbar-collapse  " id="navbarResponsive">
             <div style="width: 350px; height: 40px; margin-right: 20px">
-                <form method="post" action="/viewservlet?action=search">
+                <form method="post" action="/search">
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
@@ -45,7 +45,7 @@
                                                                                               height="20"></button>
                             </span>
                         </div>
-                        <input class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
+                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
                     </div>
                 </form>
             </div>
@@ -57,7 +57,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="/viewservlet?action=review" methods="get">Review</a>
+                       href="/search" methods="get">Review</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
@@ -138,7 +138,8 @@
                     <div style="width: 100%" class="float-left">
                         <h4 id="typeReview">${review.getDestinations()}</h4>
                         <p id="contentReview" style="width: 320px; height: 96px;
-                         ">${review.getTitle()}
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review.getTitle()}
                             <a href="/review?id=${review.getId_review()}">Xem thêm</a></p>
                     </div>
 

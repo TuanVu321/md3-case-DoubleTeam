@@ -25,8 +25,8 @@ public class ReviewDetails extends ConnectionJDBC implements IReviewDetails {
                 String title = rs.getString("titleposts");
                 String content = rs.getString("content");
                 Date datepost = rs.getDate("dateposts");
-                int star = rs.getInt("pointevalute");
-                String picture = rs.getString("picture");
+                int star = rs.getInt("pointevaluate");
+                String picture = rs.getString("img");
                 review = new Review(id, name, title, content, datepost, star, picture);
             }
 

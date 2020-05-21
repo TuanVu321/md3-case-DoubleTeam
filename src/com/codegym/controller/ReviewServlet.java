@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet(name = "ReviewServlet", urlPatterns = "/review")
 public class ReviewServlet extends HttpServlet {
-    private  ReviewDetails reviewDetails;
+    private  ReviewDetails reviewDetails = new ReviewDetails();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
@@ -22,10 +22,10 @@ public class ReviewServlet extends HttpServlet {
     private void showReview(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Review review = reviewDetails.getReviewById(id);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/review.jsp");
-        request.setAttribute("review",review);
+        request.setAttribute("review", review);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/review.jsp");
         try {
-            requestDispatcher.forward(request, response);
+            dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

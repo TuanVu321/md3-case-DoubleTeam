@@ -140,7 +140,7 @@
                         <p id="contentReview" style="width: 320px; height: 96px;
                          white-space: nowrap;overflow: hidden ;word-break: break-word;
                          text-overflow: ellipsis; writing-mode: horizontal-tb ">${review.getTitle()}
-                            <a href="/review?id_review">Xem thêm</a></p>
+                            <a href="/review?id=${review.getId_review()}">Xem thêm</a></p>
                     </div>
 
                 </c:forEach>

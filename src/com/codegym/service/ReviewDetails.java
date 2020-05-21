@@ -12,8 +12,10 @@ public class ReviewDetails extends ConnectionJDBC implements IReviewDetails {
     public Review getReviewById(int id) {
         Review review = null;
         Connection connection = null;
+
         try {
             connection = getConnection();
+            System.out.println("thanh cong ket noi voi trang");
             String sql = "select*from postsreview where id_review=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);

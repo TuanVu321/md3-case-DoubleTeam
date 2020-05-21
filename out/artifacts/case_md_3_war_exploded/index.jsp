@@ -126,7 +126,8 @@
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">
                 <c:forEach var="review" items="${hotReviews}">
-                    <a href="/review?id"> <img id="poinReview" src="${review.getPicture()}"
+
+                    <a href="/review?id=${review.getId_review()}"> <img id="poinReview" src="${review.getPicture()}"
                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                     <div style="width: 100%; margin-top: 10px">
                         <h4 id="nameUser" style="color: blue" class="float-left">${review.getName()}</h4>
@@ -136,9 +137,12 @@
                     </div>
                     <div style="width: 100%" class="float-left">
                         <h4 id="typeReview">${review.getDestinations()}</h4>
-                        <p id="contentReview" style="width: 320px; height: auto">${review.getTitle()}
-                            ...<a href="/review?id_review">Xem thêm</a></p>
+                        <p id="contentReview" style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review.getTitle()}
+                            <a href="/review?id_review">Xem thêm</a></p>
                     </div>
+
                 </c:forEach>
             </div>
             <div class="col-md-12" style="height: 380px; background: white; margin-top: 40px">

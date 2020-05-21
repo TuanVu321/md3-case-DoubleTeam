@@ -15,7 +15,7 @@ import java.io.IOException;
 public class ReviewServlet extends HttpServlet {
     private  ReviewDetails reviewDetails;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        showReview(request,response);
+
 
     }
 
@@ -34,6 +34,6 @@ public class ReviewServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        showReview(request,response);
     }
 }

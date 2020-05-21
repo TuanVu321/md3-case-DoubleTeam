@@ -21,48 +21,82 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
+<nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
         <a class="navbar-branch" id="logo" href="#">
-            <img src="../img/logoDBT2.png" height="40"/></a>
+            <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
             <samp class="navbar-toggler-icon"></samp>
         </button>
-        <div class="collapse navbar-collapse " id="navbarResponsive">
-            <div class="search-box">
-                <input class="form-control" placeholder="Search" type="text">
-                <button class="btn btn-link search-btn"><i class="fa fa-search"></i>
-                </button>
+        <div class="collapse navbar-collapse  " id="navbarResponsive">
+            <div style="width: 350px; height: 40px; margin-right: 20px">
+                <form method="post" action="/search">
+                    <div class="search-box input-group form-group">
+                        <div class="input-group-prepend " style="height: 40px">
+                            <span class="input-group-text search-btn">
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
+                                                                                              width="20"
+                                                                                              height="20"></button>
+                            </span>
+                        </div>
+                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
+                    </div>
+                </form>
             </div>
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Trang chủ
+                       href="/viewservlet">Trang Chủ
                         <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Review</a>
+                       href="/search" methods="get">Review</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Hot tour</a>
+                       href="https://tago.vn/">Combo Siêu Rẻ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Vé máy bay</a>
+                       href="https://www.vntrip.vn/ve-may-bay">Vé Máy Bay</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Khách sạn</a>
+                       href="https://www.booking.com/">Khách Sạn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="https://dichungtaxi.com/">Di Chuyển</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" style="color: white; font-size: 19px"
-                       href="/login?action=signin">Đăng Nhập</a>
+                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
+                    <a href="#" style="color: white; font-size: 19px">
+                    </a>
                 </li>
+                <%--                <li class="nav-item">--%>
+                <%--                    <%--%>
+                <%--                        if (fullname == null) {--%>
+                <%--                    %>--%>
+                <%--                    <a class="nav-link" style="color: white; font-size: 19px" href="/login?action=signin">Đăng Nhập</a>--%>
+                <%--                    <%--%>
+                <%--                    } else {--%>
+                <%--                    %>--%>
+
+                <%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
+                <%--                    <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>--%>
+                <%--                        <a id="role" href="/admin_dashboard?role=<%=role%>"--%>
+                <%--                           style="color: red; font-size: 17px"><%=role%>--%>
+                <%--                        </a>--%>
+                <%--                    </p>--%>
+                <%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
+
+                <%--                    <%--%>
+                <%--                        }--%>
+                <%--                    %>--%>
+                <%--                </li>--%>
             </ul>
         </div>
     </div>

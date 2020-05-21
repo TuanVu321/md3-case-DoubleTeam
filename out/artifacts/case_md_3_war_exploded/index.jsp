@@ -125,7 +125,7 @@
     </div>
 </div>
 <div class="container">
-    <h3 style="margin-top: 20px; margin-bottom: 20px">HOT reviews</h3>
+    <h3 style="margin-top: 20px; margin-bottom: 20px">Bài viết mới</h3>
     <div class="row">
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">

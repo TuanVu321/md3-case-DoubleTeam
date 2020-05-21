@@ -1,0 +1,11 @@
+#feedbackPassword2, #feedbackEmail, #feedbackPhonenumber {
+    width: 300px;
+}
+
+.card-body {
+    height: 800px;
+}
+
+#feedbackPolicy {
+    margin-top: 5px;
+}

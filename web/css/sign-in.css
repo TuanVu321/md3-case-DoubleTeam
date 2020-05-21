@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+    background-image: url('https://asia-vietnam.ru/wp-content/uploads/2016/04/Nochnyie-kruizyi-v-buhte-Halong-mogut-zapretit.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+}
+
+.container{
+    height: 100%;
+    align-content: center;
+}
+
+.card-signin{
+    height: 430px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 450px;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.card-singup{
+    height: 800px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.card-header h3{
+    color: white;
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
+}
+
+.remember{
+    color: white;
+}
+
+.remember input
+{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.policy{
+    color: white;
+    font-size: 12px;
+}
+
+.policy input
+{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.signin_btn{
+    color: black;
+    background-color: #FFC312;
+    width: 100px;
+}
+
+.signin_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+.signup_btn{
+    color: black;
+    background-color: #FFC312;
+    width: 100px;
+}
+
+.signup_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+.links{
+    color: white;
+}
+
+.links a{
+    margin-left: 4px;
+}
+ 
+.input-group-prepend {
+    margin-bottom: 20px;
+}
+
+.tip {
+    color: white;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-left: 50px;
+}
+
+.feedback {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-left: 50px;
+}
+
+#signup {
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    bottom: 4px;
+    left: 5px;
+}
+
+#footer {
+    margin-top: 15px;
+}
+
+#submitBtn {
+    width: 115px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 145px;
+}
+
+h3 {
+    margin-left: 130px;
+    font-weight: bold;
+    text-shadow: 2px 0 black;
+}

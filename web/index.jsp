@@ -52,7 +52,7 @@
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Trang Chủ
+                       href="/viewservlet">Trang Chủ
                         <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -61,15 +61,19 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Hot Tour</a>
+                       href="https://tago.vn/">Combo Siêu Rẻ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Vé Máy Bay</a>
+                       href="https://www.vntrip.vn/ve-may-bay">Vé Máy Bay</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Khách Sạn</a>
+                       href="https://www.booking.com/">Khách Sạn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="https://dichungtaxi.com/">Di Chuyển</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

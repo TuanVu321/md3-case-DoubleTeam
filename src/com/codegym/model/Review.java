@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Review {
     int id_review;
+    String destinations;
     String name;
     String title;
     String content;
@@ -14,6 +15,15 @@ public class Review {
     public Review() {
     }
 
+    public Review(int id_review, String name, String destinations,  String title, int star, String picture) {
+        this.id_review = id_review;
+        this.name = name;
+        this.destinations = destinations;
+        this.title = title;
+        this.star = star;
+        this.picture = picture;
+    }
+
     public Review(int id_review, String name, String title, String content, Date datePost, int star, String picture) {
         this.id_review = id_review;
         this.name = name;
@@ -22,6 +32,25 @@ public class Review {
         this.datePost = datePost;
         this.star = star;
         this.picture = picture;
+    }
+
+
+
+    public Review(String name, String title, String content, Date datePost, int star, String picture) {
+        this.name = name;
+        this.title = title;
+        this.content = content;
+        this.datePost = datePost;
+        this.star = star;
+        this.picture = picture;
+    }
+
+    public String getDestinations() {
+        return destinations;
+    }
+
+    public void setDestinations(String destinations) {
+        this.destinations = destinations;
     }
 
     public int getId_review() {

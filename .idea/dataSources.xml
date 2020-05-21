@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/demo</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="reviewdulich" uuid="a9387ffe-6366-4912-b830-80b2604274eb">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/datareview</jdbc-url>
+    </data-source>
   </component>
 </project>

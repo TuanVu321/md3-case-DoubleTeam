@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.codegym.model.SignupAccount;
@@ -128,15 +132,31 @@ public class LoginServlet extends HttpServlet {
     private void signin(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+
         List<String> inforUser = databaseService.checkAccountExists(username, password);
 
         String fullnameUser = "";
         fullnameUser = (inforUser != null) ? inforUser.get(0) : "Tai Khoan nay khong ton tai !!!";
         try {
             RequestDispatcher dispatcher = null;
+            String typeAccount = null;
             if (inforUser != null) {
+                String typeAccount_sql = "select role from datareview.account inner join datareview.role using(id_role) where datareview.account.username = ?";
+                Connection conn = databaseService.createConnection();
+                try {
+                    PreparedStatement pstmt = conn.prepareStatement(typeAccount_sql);
+                    pstmt.setString(1, username);
+                    ResultSet rs = pstmt.executeQuery();
+                    while (rs.next()) {
+                        typeAccount = rs.getString("role");
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 HttpSession session = request.getSession();
                 session.setAttribute("usernameLogIn", username);
+                session.setAttribute("typeAccountLogIn", typeAccount);
+                session.setAttribute("fullname", fullnameUser);
                 request.setAttribute("fullnameUser", fullnameUser);
                 request.setAttribute("typeAccount", inforUser.get(1));
                 dispatcher = request.getRequestDispatcher("view/welcome-to.jsp?action=welcome-to&account=" + fullnameUser + "&typeAccount=" + inforUser.get(1));

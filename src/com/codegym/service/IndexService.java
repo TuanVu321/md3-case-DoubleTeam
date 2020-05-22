@@ -10,24 +10,23 @@ import java.util.List;
 public class IndexService extends ConnectionJDBC implements IndexITF {
 
     @Override
-    public List<Review> selectTableUsers() {
+    public List<Review> selectTableUsers(int id) {
 
         List<Review> selectReview = new ArrayList<>();
-        String query = "{call select_Review()}";
+        String query = "{call selectNewReview(?)}";
         Connection connection = getConnection();
-        System.out.println(connection);
 
         try {
             CallableStatement callableStatement = connection.prepareCall(query);
+                callableStatement.setInt(1,id);
             ResultSet rs = callableStatement.executeQuery();
             while (rs.next()) {
-                int idReview = rs.getInt("id_review");
                 String nameUser = rs.getString("name_review");
                 int poinReview = rs.getInt("pointevaluate");
                 String destinations = rs.getString("destinations");
                 String title = rs.getString("titleposts");
-                String img = rs.getString("img");
-                selectReview.add(new Review(idReview, nameUser, destinations, title, poinReview, img));
+                String picture = rs.getString("picture");
+                selectReview.add(new Review(id, nameUser, destinations, title, poinReview, picture));
             }
 
 

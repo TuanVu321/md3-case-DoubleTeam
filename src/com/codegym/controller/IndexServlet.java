@@ -27,17 +27,19 @@ public class IndexServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
 
-
-
-        hotReview(request, response);
+        hotReview1(request, response);
+        hotReview2(request, response);
+        hotReview3(request, response);
+        hotReview4(request, response);
+        hotReview5(request, response);
+        hotReview6(request, response);
 
     }
 
-    private void hotReview(HttpServletRequest request, HttpServletResponse response) {
-        List<Review> hotReview = indexService.selectTableUsers();
-        request.setAttribute("hotReviews", hotReview);
+    private void hotReview1(HttpServletRequest request, HttpServletResponse response) {
+        List<Review> hotReview1 = indexService.selectTableUsers(1);
+        request.setAttribute("hotReview1", hotReview1);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         try {
             dispatcher.forward(request, response);
@@ -48,8 +50,10 @@ public class IndexServlet extends HttpServlet {
         }
     }
 
-    private void showSearchPage(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/search.jsp");
+    private void hotReview2(HttpServletRequest request, HttpServletResponse response) {
+        List<Review> hotReview2 = indexService.selectTableUsers(2);
+        request.setAttribute("hotReview2", hotReview2);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -59,8 +63,49 @@ public class IndexServlet extends HttpServlet {
         }
     }
 
-    private void showReviewPage(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/review.jsp");
+    private void hotReview3(HttpServletRequest request, HttpServletResponse response) {
+        List<Review> hotReview3 = indexService.selectTableUsers(3);
+        request.setAttribute("hotReview3", hotReview3);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void hotReview4(HttpServletRequest request, HttpServletResponse response) {
+        List<Review> hotReview4 = indexService.selectTableUsers(4);
+        request.setAttribute("hotReview4", hotReview4);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void hotReview5(HttpServletRequest request, HttpServletResponse response) {
+        List<Review> hotReview5 = indexService.selectTableUsers(5);
+        request.setAttribute("hotReview5", hotReview5);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void hotReview6(HttpServletRequest request, HttpServletResponse response) {
+        List<Review> hotReview6 = indexService.selectTableUsers(6);
+        request.setAttribute("hotReview6", hotReview6);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

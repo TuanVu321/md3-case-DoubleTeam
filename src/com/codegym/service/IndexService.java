@@ -34,4 +34,15 @@ public class IndexService extends ConnectionJDBC implements IndexITF {
         }
         return selectReview;
     }
+
+    @Override
+    public ArrayList<Review> getTop6Review(List<Review> list) {
+        ArrayList<Review> getTop6 = new ArrayList<>();
+        for (int i = 0 ; i<6; i++) {
+            getTop6.add(list.get(i));
+        }
+
+        return getTop6;
+    }
+
 }

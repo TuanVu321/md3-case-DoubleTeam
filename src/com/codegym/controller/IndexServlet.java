@@ -34,8 +34,9 @@ public class IndexServlet extends HttpServlet {
     }
 
     private void hotReview1(HttpServletRequest request, HttpServletResponse response) {
-        List<Review> hotReview1 = indexService.selectTableUsers();
-        request.setAttribute("hotReview1", hotReview1);
+        List<Review> hotReview = indexService.selectTableUsers();
+        ArrayList<Review> getTop6 = indexService.getTop6Review(hotReview);
+        request.setAttribute("getTop6", getTop6);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         try {
             dispatcher.forward(request, response);

@@ -13,6 +13,7 @@
           <element id="library" level="project" name="lib" />
           <element id="library" level="project" name="javax.mail" />
           <element id="library" level="project" name="lib1" />
+          <element id="library" level="project" name="lib2" />
         </element>
       </element>
     </root>

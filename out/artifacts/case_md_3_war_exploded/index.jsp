@@ -129,109 +129,134 @@
     <div class="row">
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">
-                <c:forEach var="review" items="${hotReviews}">
+                <c:forEach var="review2" items="${hotReview1}">
 
-                    <a href="/review?id=${review.getId_review()}"> <img id="poinReview" src="${review.getPicture()}"
+                    <a href="/review?id=1"> <img src="${review2.getPicture()}"
                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                     <div style="width: 100%; margin-top: 10px">
-                        <h4 id="nameUser" style="color: blue" class="float-left">${review.getName()}</h4>
-                        <h4 class="float-right" style="margin-left: 5px">${review.getStar()}</h4>
-                        <img id="imgReviw" src="img/star.png"
-                             style="width: 25px; height: 25px" class="float-right">
+                        <a href="/review?id=1"><h6 style="color: blue; width: 260px" class="float-left">${review2.getName()}</h6></a>
+                        <h6 class="float-right" style="margin-left: 5px">${review2.getStar()}</h6>
+                        <img src="img/star.png"
+                             style="width: 20px; height: 20px" class="float-right">
                     </div>
                     <div style="width: 100%" class="float-left">
-                        <h4 id="typeReview">${review.getDestinations()}</h4>
-                        <p id="contentReview" style="width: 320px; height: 96px;
+                        <h6>${review2.getDestinations()}</h6>
+                        <p style="width: 320px; height: 96px;
                          white-space: nowrap;overflow: hidden ;word-break: break-word;
-                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review.getTitle()}
-                            <a href="/review?id=${review.getId_review()}">Xem thêm</a></p>
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review2.getTitle()}
+                            <a href="/review?id=1">Xem thêm</a></p>
                     </div>
 
                 </c:forEach>
             </div>
             <div class="col-md-12" style="height: 380px; background: white; margin-top: 40px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
-                <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
-                    <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
-                </div>
-                <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ... <a href="#">Xem thêm</a></p>
-                </div>
+                <c:forEach var="review2" items="${hotReview4}">
+
+                    <a href="/review?id=4"> <img src="${review2.getPicture()}"
+                        style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                    <div style="width: 100%; margin-top: 10px">
+                        <a href="/review?id=4"><h6 style="color: blue; width: 260px" class="float-left">${review2.getName()}</h6></a>
+                        <h6 class="float-right" style="margin-left: 5px">${review2.getStar()}</h6>
+                        <img src="img/star.png"
+                             style="width: 20px; height: 20px" class="float-right">
+                    </div>
+                    <div style="width: 100%" class="float-left">
+                        <h6>${review2.getDestinations()}</h6>
+                        <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review2.getTitle()}
+                            <a href="/review?id=4">Xem thêm</a></p>
+                    </div>
+
+                </c:forEach>
             </div>
         </div>
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
-                <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
-                    <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
-                </div>
-                <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ...<a href="#">Xem thêm</a></p>
-                </div>
+                <c:forEach var="review2" items="${hotReview2}">
+
+                    <a href="/review?id=2"> <img src="${review2.getPicture()}"
+                                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                    <div style="width: 100%; margin-top: 10px">
+                        <a href="/review?id=2"><h6 style="color: blue; width: 260px" class="float-left">${review2.getName()}</h6></a>
+                        <h6 class="float-right" style="margin-left: 5px">${review2.getStar()}</h6>
+                        <img src="img/star.png"
+                             style="width: 20px; height: 20px" class="float-right">
+                    </div>
+                    <div style="width: 100%" class="float-left">
+                        <h6>${review2.getDestinations()}</h6>
+                        <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review2.getTitle()}
+                            <a href="/review?id=2">Xem thêm</a></p>
+                    </div>
+
+                </c:forEach>
             </div>
             <div class="col-md-12" style="height: 380px; background: white; margin-top: 40px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
-                <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
-                    <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
-                </div>
-                <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ... <a href="#">Xem thêm</a></p>
-                </div>
+                <c:forEach var="review2" items="${hotReview5}">
+
+                    <a href="/review?id=5"> <img src="${review2.getPicture()}"
+                                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                    <div style="width: 100%; margin-top: 10px">
+                        <a href="/review?id=5"><h6 style="color: blue; width: 260px" class="float-left">${review2.getName()}</h6></a>
+                        <h6 class="float-right" style="margin-left: 5px">${review2.getStar()}</h6>
+                        <img src="img/star.png"
+                             style="width: 20px; height: 20px" class="float-right">
+                    </div>
+                    <div style="width: 100%" class="float-left">
+                        <h6>${review2.getDestinations()}</h6>
+                        <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review2.getTitle()}
+                            <a href="/review?id=5">Xem thêm</a></p>
+                    </div>
+
+                </c:forEach>
             </div>
         </div>
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
-                <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
-                    <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
-                </div>
-                <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ...<a href="#">Xem thêm</a></p>
-                </div>
+                <c:forEach var="review2" items="${hotReview3}">
+
+                    <a href="/review?id=3"> <img src="${review2.getPicture()}"
+                                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                    <div style="width: 100%; margin-top: 10px">
+                        <a href="/review?id=3"><h6 style="color: blue; width: 260px" class="float-left">${review2.getName()}</h6></a>
+                        <h6 class="float-right" style="margin-left: 5px">${review2.getStar()}</h6>
+                        <img src="img/star.png"
+                             style="width: 20px; height: 20px" class="float-right">
+                    </div>
+                    <div style="width: 100%" class="float-left">
+                        <h6>${review2.getDestinations()}</h6>
+                        <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review2.getTitle()}
+                            <a href="/review?id=3">Xem thêm</a></p>
+                    </div>
+
+                </c:forEach>
             </div>
             <div class="col-md-12" style="height: 380px; background: white; margin-top: 40px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
-                <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
-                    <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
-                </div>
-                <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ... <a href="#">Xem thêm</a></p>
-                </div>
+                <c:forEach var="review2" items="${hotReview6}">
+
+                    <a href="/review?id=6"> <img src="${review2.getPicture()}"
+                                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                    <div style="width: 100%; margin-top: 10px">
+                        <a href="/review?id=6"><h6 style="color: blue; width: 260px" class="float-left">${review2.getName()}</h6></a>
+                        <h6 class="float-right" style="margin-left: 5px">${review2.getStar()}</h6>
+                        <img src="img/star.png"
+                             style="width: 20px; height: 20px" class="float-right">
+                    </div>
+                    <div style="width: 100%" class="float-left">
+                        <h6>${review2.getDestinations()}</h6>
+                        <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review2.getTitle()}
+                            <a href="/review?id=6">Xem thêm</a></p>
+                    </div>
+
+                </c:forEach>
             </div>
         </div>
     </div>

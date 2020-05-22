@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MySQL - demo@localhost" uuid="2e253c9a-3acc-4445-bea0-eb4ebd825dda">
+    <data-source source="LOCAL" name="Reviewdulich" uuid="7a9d67c0-af2e-49fc-badf-2d7f266047d2">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/demo</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="reviewdulich" uuid="a9387ffe-6366-4912-b830-80b2604274eb">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/datareview</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
     </data-source>
   </component>
 </project>

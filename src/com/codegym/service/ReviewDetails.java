@@ -50,7 +50,7 @@ public class ReviewDetails extends ConnectionJDBC implements IReviewDetails {
         List<Review> listReview = new ArrayList<>();
         try{
             connection = getConnection();
-            String sql = "select * from postsreview where name_review like ?";
+            String sql = "SELECT * FROM postsreview WHERE CONCAT(content, titleposts) LIKE ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             String nameSearch = "%"+name+"%";
             preparedStatement.setString(1,nameSearch);

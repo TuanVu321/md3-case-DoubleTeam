@@ -18,14 +18,11 @@
 --
 -- Table structure for table `account`
 --
-
+create database c0220h1dbt;
+use c0220h1dbt;
 DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-
-create database c0220h1dbt;
-use c0220h1dbt;
-
 CREATE TABLE `account` (
   `id_account` int(11) NOT NULL AUTO_INCREMENT,
   `id_role` int(11) NOT NULL,
@@ -205,4 +202,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-22 14:37:21
+-- Dump completed on 2020-05-22 16:21:24

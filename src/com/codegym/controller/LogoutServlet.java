@@ -31,5 +31,6 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String usernameLogIn = (String)session.getAttribute("usernameLogIn");
         databaseService.updateOfflineStatus(usernameLogIn);
+        session.invalidate();
     }
 }

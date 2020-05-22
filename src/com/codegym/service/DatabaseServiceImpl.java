@@ -15,16 +15,29 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class DatabaseServiceImpl implements DatabaseService {
-    private static final String jdbcURL = "jdbc:mysql://localhost:3306/casestudy3_database";
+    private static final String jdbcURL = "jdbc:mysql://localhost:3306/datareview";
     private String userDB = "root";
     private String passDB = "11100001";
     private static Connection conn;
 
-    private static final String UPDATE_STATUS = "update casestudy3_database.account set active = 1 where email = ?;";
+    private static final String UPDATE_STATUS = "update datareview.account set active = 1 where email = ?;";
+    private static final String FOREIGN_KEY_CHECKS = "SET FOREIGN_KEY_CHECKS=0";
 
     public DatabaseServiceImpl(){}
 
-    private Connection createConnection() {
+    public Connection setCheckForeignKey() {
+        Connection conn = createConnection();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(FOREIGN_KEY_CHECKS);
+            pstmt.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return conn;
+    }
+
+    public Connection createConnection() {
         MySQLConnect mysqlConnect = new MySQLConnect(jdbcURL);
         mysqlConnect.setDBDriver();
         mysqlConnect.setCredentials(userDB, passDB);
@@ -44,7 +57,7 @@ public class DatabaseServiceImpl implements DatabaseService {
         try {
             Connection conn = createConnection();
 
-            String sql_query = "insert into casestudy3_database.account(id_role, username, password, fullname, phonenumber, email, address, active, online)" +
+            String sql_query = "insert into datareview.account(id_role, username, password, fullname, phone, email, address, active, online)" +
                                         "values(" +
                                                     "2, '" +
                                                     username + "', '" +
@@ -160,8 +173,8 @@ public class DatabaseServiceImpl implements DatabaseService {
     public List<String> checkAccountExists(String username, String password) {
         try {
             Connection conn = createConnection();
-            String sql_query = "select role, username, password, fullname from casestudy3_database.account " +
-                                      "inner join casestudy3_database.role using(id_role)" +
+            String sql_query = "select role, username, password, fullname from datareview.account " +
+                                      "inner join datareview.role using(id_role)" +
                                       "where username =  '" + username + "' and password = '" + password + "' and active = 1;";
             System.out.println(sql_query);
 
@@ -179,7 +192,7 @@ public class DatabaseServiceImpl implements DatabaseService {
                     inforUser.add(fullnameUser);
                     inforUser.add(roleUser);
 
-                    String sql_updateOnline = "update casestudy3_database.account set online = 1 where username = '" + username + "';";
+                    String sql_updateOnline = "update datareview.account set online = 1 where username = '" + username + "';";
                     System.out.println(sql_updateOnline);
                     executeObj.execute(sql_updateOnline);
 
@@ -204,7 +217,7 @@ public class DatabaseServiceImpl implements DatabaseService {
 
     public void updateOfflineStatus(String account) {
         Connection conn = createConnection();
-        String sql_query = "update casestudy3_database.account set online = 0 where username = '" + account + "';";
+        String sql_query = "update datareview.account set online = 0 where username = '" + account + "';";
         MySQLExecute executeObj = new MySQLExecute(conn);
         executeObj.execute(sql_query);
     }

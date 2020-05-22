@@ -23,8 +23,9 @@
 </head>
 <body>
 <%
-    String fullname = request.getParameter("account");
-    String role = request.getParameter("typeAccount");
+    session = request.getSession();
+    String fullname = (String)session.getAttribute("fullname");
+    String typeAccount = (String)session.getAttribute("typeAccountLogIn");
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
@@ -82,6 +83,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                <li class="nav-item">
                     <%
                         if (fullname == null) {
                     %>
@@ -89,18 +91,24 @@
                     <%
                     } else {
                     %>
-
-                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
                     <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
-                        <a id="role" href="/admin_dashboard?role=<%=role%>"
-                           style="color: red; font-size: 17px"><%=role%>
-                        </a>
+                        <%
+                            if (typeAccount.equals("admin")) {
+                        %>
+                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <%
+                        } else {
+                        %>
+                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <%
+                            }
+                        %>
                     </p>
                     <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
-
                     <%
                         }
                     %>
+                </li>
                 </li>
             </ul>
         </div>

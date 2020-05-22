@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Review {
     int id_review;
+    int id_destination;
+    int id_account;
     String destinations;
     String name;
     String title;
@@ -12,14 +14,24 @@ public class Review {
     int star;
     String picture;
 
-    public Review() {
-    }
+    public Review() {}
 
     public Review(int id_review, String name, String destinations,  String title, int star, String picture) {
         this.id_review = id_review;
         this.name = name;
         this.destinations = destinations;
         this.title = title;
+        this.star = star;
+        this.picture = picture;
+    }
+
+    public Review(int id_destination, int id_account, String name, String title, String content, Date datePost, int star, String picture) {
+        this.id_destination = id_destination;
+        this.id_account = id_account;
+        this.name = name;
+        this.title = title;
+        this.content = content;
+        this.datePost = datePost;
         this.star = star;
         this.picture = picture;
     }
@@ -34,23 +46,20 @@ public class Review {
         this.picture = picture;
     }
 
-
-
-    public Review(String name, String title, String content, Date datePost, int star, String picture) {
-        this.name = name;
-        this.title = title;
-        this.content = content;
-        this.datePost = datePost;
-        this.star = star;
-        this.picture = picture;
+    public int getId_destination() {
+        return id_destination;
     }
 
-    public String getDestinations() {
-        return destinations;
+    public void setId_destination(int id_destination) {
+        this.id_destination = id_destination;
     }
 
-    public void setDestinations(String destinations) {
-        this.destinations = destinations;
+    public int getId_account() {
+        return id_account;
+    }
+
+    public void setId_account(int id_account) {
+        this.id_account = id_account;
     }
 
     public int getId_review() {
@@ -107,5 +116,11 @@ public class Review {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getDestinations() {
+        return destinations;
+    }public void setDestinations(String destinations) {
+        this.destinations = destinations;
     }
 }

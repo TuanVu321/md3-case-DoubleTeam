@@ -29,8 +29,6 @@ public class IndexService extends ConnectionJDBC implements IndexITF {
                 selectReview.add(new Review(id_review, nameUser, destinations, title, poinReview, picture));
             }
 
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

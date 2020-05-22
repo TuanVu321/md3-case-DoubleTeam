@@ -18,7 +18,21 @@ public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        findByName(request,response);
+         findByName(request,response);
+    }
+
+    private void listByPage(HttpServletRequest request, HttpServletResponse response) {
+        int start =0;
+        int end = 0;
+        List<Review> ListReview = reviewDetails.selectByDay();
+        int total = ListReview.size();
+        if(total<=10){
+            end=10;
+        }else {
+            end=total;
+        }
+        List<Review> ListPage = reviewDetails.getListByPage(ListReview,start,end);
+
     }
 
     private void findByName(HttpServletRequest request, HttpServletResponse response) {

@@ -85,11 +85,6 @@ public class ReviewDetails extends ConnectionJDBC implements IReviewDetails {
         List<Review> listReview = new ArrayList<>();
         try{
             connection = getConnection();
-//            MySQLConnect connObj = new MySQLConnect("jdbc:mysql://localhost:3306/datareview");
-//            connObj.setDBDriver();
-//            connObj.setCredentials("root", "123456");
-//            connection = connObj.openConnection("jdbc:mysql://localhost:3306/datareview");
-
             String sql="select * from postsreview order by dateposts desc";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
@@ -117,4 +112,18 @@ public class ReviewDetails extends ConnectionJDBC implements IReviewDetails {
 
         return listReview;
     }
+
+    @Override
+    public List<Review> getListByPage(List<Review> List, int first, int last) {
+        List<Review> ListReview = new ArrayList<>();
+        for (int i = first; i <last ; i++) {
+            ListReview.add(List.get(i));
+        }
+        return ListReview;
+    }
+
+
+
 }
+
+

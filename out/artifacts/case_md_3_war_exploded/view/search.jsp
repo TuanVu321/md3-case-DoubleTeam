@@ -153,19 +153,19 @@
                <td>sao</td>
                <td>Ngày đăng</td>
            </tr>
-           <C:forEach var="review" items="${listReview}">
+           <C:forEach var="review2" items="${listReview}">
                <tr>
 
-                   <td><a href="/review?id=${review.getId_review()}">${review.getName()}</a></td>
-                   <td><img src="../img/star.png" width="20px" height="20">${review.getStar()}</td>
-                   <td>${review.getDatePost()}</td>
+                   <td><a href="/review?id=${review2.getId_review()}">${review2.getName()}</a></td>
+                   <td><img src="../img/star.png" width="20px" height="20">${review2.getStar()}</td>
+                   <td>${review2.getDatePost()}</td>
                </tr>
            </C:forEach>
        </table>
     </div>
 
 </div>
-<div class="container">
+<div class="container-fluid">
 
     <div class="container-fluid" style="background: black; height: 500px; margin-top: 20px">
         <div style=" width: 700px; height: 450px; margin: 25px auto; text-align: center">

@@ -26,7 +26,7 @@ public class ReviewDetails extends ConnectionJDBC implements IReviewDetails {
                 String content = rs.getString("content");
                 Date datepost = rs.getDate("dateposts");
                 int star = rs.getInt("pointevaluate");
-                String picture = rs.getString("img");
+                String picture = rs.getString("picture");
                 review = new Review(id, name, title, content, datepost, star, picture);
             }
 
@@ -62,7 +62,7 @@ public class ReviewDetails extends ConnectionJDBC implements IReviewDetails {
                 String content = rs.getString("content");
                 Date datepost = rs.getDate("dateposts");
                 int star = rs.getInt("pointevaluate");
-                String picture = rs.getString("img");
+                String picture = rs.getString("picture");
                 listReview.add(new Review(id, fullname, title, content, datepost, star, picture));
             }
         } catch (SQLException throwables) {
@@ -95,7 +95,7 @@ public class ReviewDetails extends ConnectionJDBC implements IReviewDetails {
                 String content = rs.getString("content");
                 Date datepost = rs.getDate("dateposts");
                 int star = rs.getInt("pointevaluate");
-                String picture = rs.getString("img");
+                String picture = rs.getString("picture");
                 listReview.add(new Review(id, fullname, title, content, datepost, star, picture));
             }
         } catch (SQLException throwables) {

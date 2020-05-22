@@ -129,108 +129,115 @@
     <div class="row">
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">
-                <c:forEach var="review" items="${hotReviews}">
-
-                    <a href="/review?id=${review.getId_review()}"> <img id="poinReview" src="${review.getPicture()}"
-                         style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
-                    <div style="width: 100%; margin-top: 10px">
-                        <h4 id="nameUser" style="color: blue" class="float-left">${review.getName()}</h4>
-                        <h4 class="float-right" style="margin-left: 5px">${review.getStar()}</h4>
-                        <img id="imgReviw" src="img/star.png"
-                             style="width: 25px; height: 25px" class="float-right">
-                    </div>
-                    <div style="width: 100%" class="float-left">
-                        <h4 id="typeReview">${review.getDestinations()}</h4>
-                        <p id="contentReview" style="width: 320px; height: 96px;
+                <a href="/review?id=${getTop6.get(0).getId_review()}"> <img src="${getTop6.get(0).getPicture()}"
+                                             style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                <div style="width: 100%; margin-top: 10px">
+                    <a href="/review?id=${getTop6.get(0).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                        ${getTop6.get(0).getName()}</h6></a>
+                    <h6 class="float-right" style="margin-left: 5px">${getTop6.get(0).getStar()}</h6>
+                    <img src="img/star.png"
+                         style="width: 20px; height: 20px" class="float-right">
+                </div>
+                <div style="width: 100%" class="float-left">
+                    <h6>${getTop6.get(0).getDestinations()}</h6>
+                    <p style="width: 320px; height: 96px;
                          white-space: nowrap;overflow: hidden ;word-break: break-word;
-                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${review.getTitle()}
-                            <a href="/review?id=${review.getId_review()}">Xem thêm</a></p>
-                    </div>
-
-                </c:forEach>
-            </div>
-            <div class="col-md-12" style="height: 380px; background: white; margin-top: 40px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
-                <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
-                    <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
-                </div>
-                <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ... <a href="#">Xem thêm</a></p>
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(0).getTitle()}
+                        <a href="/review?id=${getTop6.get(0).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 hot-review-tour">
-            <div class="col-md-12" style="background: white; height: 380px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+            <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px">
+                <a href="/review?id=${getTop6.get(3).getId_review()}"> <img src="${getTop6.get(3).getPicture()}"
+                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
+                    <a href="/review?id=${getTop6.get(3).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                        ${getTop6.get(3).getName()}</h6></a>
+                    <h6 class="float-right" style="margin-left: 5px">${getTop6.get(3).getStar()}</h6>
                     <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
+                         style="width: 20px; height: 20px" class="float-right">
                 </div>
                 <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ...<a href="#">Xem thêm</a></p>
-                </div>
-            </div>
-            <div class="col-md-12" style="height: 380px; background: white; margin-top: 40px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
-                <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
-                    <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
-                </div>
-                <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ... <a href="#">Xem thêm</a></p>
+                    <h6>${getTop6.get(3).getDestinations()}</h6>
+                    <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(3).getTitle()}
+                        <a href="/review?id=${getTop6.get(3).getId_review()}}">Xem thêm</a></p>
                 </div>
             </div>
         </div>
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                <a href="/review?id=${getTop6.get(1).getId_review()}"> <img src="${getTop6.get(1).getPicture()}"
+                     style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
+                    <a href="/review?id=${getTop6.get(1).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                        ${getTop6.get(1).getName()}</h6></a>
+                    <h6 class="float-right" style="margin-left: 5px">${getTop6.get(1).getStar()}</h6>
                     <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
+                         style="width: 20px; height: 20px" class="float-right">
                 </div>
                 <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ...<a href="#">Xem thêm</a></p>
+                    <h6>${getTop6.get(1).getDestinations()}</h6>
+                    <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(1).getTitle()}
+                        <a href="/review?id=${getTop6.get(1).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
-            <div class="col-md-12" style="height: 380px; background: white; margin-top: 40px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+            <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px" >
+                <a href="/review?id=${getTop6.get(4).getId_review()}"> <img src="${getTop6.get(4).getPicture()}"
+                                                                     style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <h4 style="color: blue" class="float-left">Lý Mạc Sầu</h4>
-                    <h4 class="float-right" style="margin-left: 5px">5.0</h4>
+                    <a href="/review?id=${getTop6.get(4).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                        ${getTop6.get(4).getName()}</h6></a>
+                    <h6 class="float-right" style="margin-left: 5px">${getTop6.get(4).getStar()}</h6>
                     <img src="img/star.png"
-                         style="width: 25px; height: 25px" class="float-right">
+                         style="width: 20px; height: 20px" class="float-right">
                 </div>
                 <div style="width: 100%" class="float-left">
-                    <h4>Cầu Rồng Đà NẴng</h4>
-                    <p style="width: 320px; height: auto">Cầu Rồng Đà Nẵng với hệ thống ánh sáng hiện đại
-                        cùng âm thanh và ánh sáng cộng hưởng trong bán kính 300m ở khu vực đầu Rồng phun lửa
-                        ... <a href="#">Xem thêm</a></p>
+                    <h6>${getTop6.get(4).getDestinations()}</h6>
+                    <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(4).getTitle()}
+                        <a href="/review?id=${getTop6.get(4).getId_review()}">Xem thêm</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 hot-review-tour">
+            <div class="col-md-12" style="background: white; height: 380px">
+                <a href="/review?id=${getTop6.get(2).getId_review()}"> <img src="${getTop6.get(2).getPicture()}"
+                           style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                <div style="width: 100%; margin-top: 10px">
+                    <a href="/review?id=${getTop6.get(2).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                        ${getTop6.get(2).getName()}</h6></a>
+                    <h6 class="float-right" style="margin-left: 5px">${getTop6.get(2).getStar()}</h6>
+                    <img src="img/star.png"
+                         style="width: 20px; height: 20px" class="float-right">
+                </div>
+                <div style="width: 100%" class="float-left">
+                    <h6>${getTop6.get(2).getDestinations()}</h6>
+                    <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(2).getTitle()}
+                        <a href="/review?id=${getTop6.get(2).getId_review()}">Xem thêm</a></p>
+                </div>
+            </div>
+            <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px">
+                <a href="/review?id=${getTop6.get(5).getId_review()}"> <img src="${getTop6.get(5).getPicture()}"
+                                             style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                <div style="width: 100%; margin-top: 10px">
+                    <a href="/review?id=${getTop6.get(5).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                        ${getTop6.get(5).getName()}</h6></a>
+                    <h6 class="float-right" style="margin-left: 5px">${getTop6.get(5).getStar()}</h6>
+                    <img src="img/star.png"
+                         style="width: 20px; height: 20px" class="float-right">
+                </div>
+                <div style="width: 100%" class="float-left">
+                    <h6>${getTop6.get(5).getDestinations()}</h6>
+                    <p style="width: 320px; height: 96px;
+                         white-space: nowrap;overflow: hidden ;word-break: break-word;
+                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(5).getTitle()}
+                        <a href="/review?id=${getTop6.get(5).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
         </div>
@@ -239,96 +246,96 @@
     <div class="row">
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 280px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
+                <a href="https://bitly.com.vn/AxXo9"><img src="https://bitly.com.vn/rVNml"
                                  style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <h4>Khám Phá du lịch Đá Nẵng</h4>
+                    <a href="https://bitly.com.vn/AxXo9"><h4>Khám Phá Hà Nội - Đà Nẵng</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"
                          style="width: 20px; height: 20px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">1.385.000</p>
+                    <p class="float-left" style="margin-left: 10px">3.650.000</p>
                     <img src="img/time.png"
                          style="width: 20px; height: 20px; margin-left: 40px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">3 ngày</p>
+                    <p class="float-left" style="margin-left: 10px">5 ngày 4 đêm</p>
                 </div>
             </div>
             <div class="col-md-12" style="background: white; height: 280px; margin-top: 40px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
+                <a href="https://bitly.com.vn/9mlA5"><img src="https://bitly.com.vn/uN7Il"
                                  style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <h4>Khám Phá du lịch Đá Nẵng</h4>
+                    <a href="https://bitly.com.vn/9mlA5"><h4>Khám Phá Nha Trang - Đà Lạt</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"
                          style="width: 20px; height: 20px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">1.385.000</p>
+                    <p class="float-left" style="margin-left: 10px">6.490.000</p>
                     <img src="img/time.png"
                          style="width: 20px; height: 20px; margin-left: 40px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">3 ngày</p>
+                    <p class="float-left" style="margin-left: 10px">4 ngày 3 đêm</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 280px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
+                <a href="https://bitly.com.vn/t0buC"><img src="https://bitly.com.vn/bUTI4"
                                  style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <h4>Khám Phá du lịch Đá Nẵng</h4>
+                    <a href="https://bitly.com.vn/t0buC"><h4>Khám Phá Hà Nội - Nha Trang</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"
                          style="width: 20px; height: 20px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">1.385.000</p>
+                    <p class="float-left" style="margin-left: 10px">3.620.000</p>
                     <img src="img/time.png"
                          style="width: 20px; height: 20px; margin-left: 40px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">3 ngày</p>
+                    <p class="float-left" style="margin-left: 10px">4 ngày 3 đêm</p>
                 </div>
             </div>
             <div class="col-md-12" style="background: white; height: 280px; margin-top: 40px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
+                <a href="https://bitly.com.vn/AU2ug"><img src="https://bitly.com.vn/K6EaJ"
                                  style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <h4>Khám Phá du lịch Đá Nẵng</h4>
+                    <a href="https://bitly.com.vn/AU2ug"><h4>Khám Phá Hà Nội - Phú Yên</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"
                          style="width: 20px; height: 20px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">1.385.000</p>
+                    <p class="float-left" style="margin-left: 10px">5.790.000</p>
                     <img src="img/time.png"
                          style="width: 20px; height: 20px; margin-left: 40px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">3 ngày</p>
+                    <p class="float-left" style="margin-left: 10px">4 ngày 3 đêm</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 280px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
+                <a href="https://bitly.com.vn/FcdqI"><img src="https://bitly.com.vn/rdeKb"
                                  style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <h4>Khám Phá du lịch Đá Nẵng</h4>
+                    <a href="https://bitly.com.vn/FcdqI"><h4>Khám Phá Hà Nội - Miền Tây</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png" style="width: 20px; height: 20px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">1.385.000</p>
+                    <p class="float-left" style="margin-left: 10px">5.190.000</p>
                     <img src="img/time.png"
                          style="width: 20px; height: 20px; margin-left: 40px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">3 ngày</p>
+                    <p class="float-left" style="margin-left: 10px">4 ngày 3 đêm</p>
                 </div>
             </div>
             <div class="col-md-12" style="background: white; height: 280px; margin-top: 40px">
-                <a href="#"><img src="img/cau-rong-da-nang.jpg"
+                <a href="https://bitly.com.vn/gKLEI"><img src="https://bitly.com.vn/GHBuD"
                                  style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <h4>Khám Phá du lịch Đá Nẵng</h4>
+                    <a href="https://bitly.com.vn/gKLEI"><h4>Khám Phá Hà Nội - Phú Quốc</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"
                          style="width: 20px; height: 20px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">1.385.000</p>
+                    <p class="float-left" style="margin-left: 10px">3.280.000</p>
                     <img src="img/time.png"
                          style="width: 20px; height: 20px; margin-left: 40px" class="float-left">
-                    <p class="float-left" style="margin-left: 10px">3 ngày</p>
+                    <p class="float-left" style="margin-left: 10px">4 ngày 3 đêm</p>
                 </div>
             </div>
         </div>

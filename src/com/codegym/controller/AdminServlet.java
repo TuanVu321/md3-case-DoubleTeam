@@ -218,7 +218,6 @@ public class AdminServlet extends HttpServlet {
         int total = 10;
 
         if (pageid == 1) {
-
         } else {
             pageid = pageid - 1;
             pageid = pageid * total + 1;

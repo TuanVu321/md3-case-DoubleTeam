@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
                 showIndexPage(request, response);
                 break;
             case "signin":
-               /* activeAccount(request, response);*/
+                activeAccount(request, response);
                 showSignInForm(request, response);
                 break;
             case "welcome-temp":

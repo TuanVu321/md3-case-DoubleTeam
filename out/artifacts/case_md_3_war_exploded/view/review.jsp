@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 19/05/2020
-  Time: 4:36 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -109,17 +103,21 @@
         </div>
     </div>
 </nav>
-<div id="demo" class="carousel slide" data-ride="carousel">
+<div id="banner" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
-        <li data-target="#demo" data-slide-to="0" class="active"></li>
-        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#banner" data-slide-to="0" class="active"></li>
+        <li data-target="#banner" data-slide-to="1"></li>
+        <li data-target="#banner" data-slide-to="2"></li>
     </ul>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="../img/banner2.png">
+            <img src="img/banner2.png">
         </div>
         <div class="carousel-item">
-            <img src="../img/banner3.png">
+            <img src="img/images1.png">
+        </div>
+        <div class="carousel-item">
+            <img src="img/banner3.png">
         </div>
     </div>
 </div>
@@ -140,10 +138,6 @@
             <div style="float: left">Danh gia bai viet</div>
             <div style="float: left">anh sao</div>
         </div>
-
-
-
-
 </div>
 <div class="container-fluid">
 

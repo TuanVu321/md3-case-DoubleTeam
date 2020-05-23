@@ -12,10 +12,10 @@ import java.util.List;
 
 public class ReviewServletImpl implements ReviewServlet {
     DatabaseServiceImpl databaseService = new DatabaseServiceImpl();
-    private static final String SELECT_ALL_POST_REVIEW = "select id_review, name_review, titleposts, content, dateposts, pointevaluate, picture from datareview.postsreview;";
-    private static final String SELECT_REVIEW_PAGINATION = "select id_review, name_review, titleposts, content, dateposts, pointevaluate, picture from datareview.postsreview " +
+    private static final String SELECT_ALL_POST_REVIEW = "select id_review, name_review, titleposts, content, dateposts, pointevaluate, picture from c0220h1dbt.postsreview;";
+    private static final String SELECT_REVIEW_PAGINATION = "select id_review, name_review, titleposts, content, dateposts, pointevaluate, picture from c0220h1dbt.postsreview " +
                                                                                     "limit ?, ?";
-    private static final String CREATE_NEW_REVIEW = "insert into datareview.postsreview( " +
+    private static final String CREATE_NEW_REVIEW = "insert into c0220h1dbt.postsreview( " +
             "id_destinations, id_account, name_review, titleposts, picture, content, pointevaluate, dateposts" +
             ") values (?,?,?,?,?,?,?,?);";
 

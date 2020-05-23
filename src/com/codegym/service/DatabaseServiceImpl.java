@@ -15,7 +15,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class DatabaseServiceImpl implements DatabaseService {
-    private static final String jdbcURL = "jdbc:mysql://localhost:3306/datareview";
+    private static final String jdbcURL = "jdbc:mysql://localhost:3306/c0220h1dbt";
     private String userDB = "root";
     private String passDB = "11100001";
     private static Connection conn;

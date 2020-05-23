@@ -18,10 +18,15 @@
     <link rel="stylesheet" href="../css/bootstrap-grid.css">
     <link rel="stylesheet" href="../css/bootstrap-reboot.css">
     <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Tìm kiếm</title>
 </head>
 <body>
-
+<%
+    session = request.getSession();
+    String fullname = (String)session.getAttribute("fullname");
+    String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+%>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
         <a class="navbar-branch" id="logo" href="/viewservlet">
@@ -36,9 +41,7 @@
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
-                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
-                                                                                              width="20"
-                                                                                              height="20"></button>
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
                             </span>
                         </div>
                         <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
@@ -73,37 +76,35 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
-                    <a href="#" style="color: white; font-size: 19px">
-                    </a>
-                </li>
                 <li class="nav-item">
-<%--                <li class="nav-item">--%>
-<%--                    <%--%>
-<%--                        if (fullname == null) {--%>
-<%--                    %>--%>
-<%--                    <a class="nav-link" style="color: white; font-size: 19px" href="/login?action=signin">Đăng Nhập</a>--%>
-<%--                    <%--%>
-<%--                    } else {--%>
-<%--                    %>--%>
-<%--                    <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>--%>
-<%--                        <%--%>
-<%--                            if (typeAccount.equals("admin")) {--%>
-<%--                        %>--%>
-<%--                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>--%>
-<%--                        <%--%>
-<%--                        } else {--%>
-<%--                        %>--%>
-<%--                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>--%>
-<%--                        <%--%>
-<%--                            }--%>
-<%--                        %>--%>
-<%--                    </p>--%>
-<%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
-<%--                    <%--%>
-<%--                        }--%>
-<%--                    %>--%>
-<%--                </li>--%>
+                    <%
+                        if (fullname == null) {
+                    %>
+                    <a class="nav-link" style="color: white; font-size: 19px" href="/login?action=signin">Đăng Nhập</a>
+                    <%
+                    } else {
+                    %>
+                </li>
+                <li>
+                    <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
+                        <%
+                            if (typeAccount.equals("admin")) {
+                        %>
+                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <%
+                        } else {
+                        %>
+                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <%
+                            }
+                        %>
+                    </p>
+                </li>
+                <li>
+                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
+                    <%
+                        }
+                    %>
                 </li>
             </ul>
         </div>
@@ -123,39 +124,35 @@
         </div>
     </div>
 </div>
-<%--<div class="container">--%>
-<%--    <h3 style="margin-top: 20px; margin-bottom: 20px">HOT Tour </h3>--%>
-<%--    <div class="row">--%>
-<%--        <div class="col-md-4 hot-tour">--%>
-<%--            <div style="background: white; float: left">--%>
-<%--                <div style="width:110px; height: 110px; margin-left: 0; margin-right: 0">--%>
-<%--                    <img src="../img/background.jpg" height="70px" width="70px">--%>
-<%--                </div>--%>
+<div class="container">
+<%--    <h3 style="margin-top: 20px; margin-bottom: 20px">HOT Tour </h3>
+    <div class="row">
+        <div class="col-md-4 hot-tour">
+            <div style="background: white; float: left">
+                <div style="width:110px; height: 110px; margin-left: 0; margin-right: 0">
+                    <img src="../img/background.jpg" height="70px" width="70px">
+                </div>
 
-<%--                <div style="margin: 0 auto">--%>
-<%--                    <p>Kham pha du lich da nang</p>--%>
-<%--                    <p><img src="../img/money.png" height="15" width="15"> 10000000 <span>VND</span></p>--%>
-<%--                    <p><img src="../img/time.png" height="15" width="15"> 3 <span>Ngay</span></p>--%>
+                <div style="margin: 0 auto">
+                    <p>Kham pha du lich da nang</p>
+                    <p><img src="../img/money.png" height="15" width="15"> 10000000 <span>VND</span></p>
+                    <p><img src="../img/time.png" height="15" width="15"> 3 <span>Ngay</span></p>
 
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="hot-tour">1</div>--%>
+                </div>
+            </div>
+            <div class="hot-tour">1</div>
 
-<%--        </div>--%>
-<%--        <div class="col-md-4">--%>
+        </div>
+        <div class="col-md-4">
 
-<%--        </div>--%>
-<%--        <div class="col-md-4">--%>
+        </div>
+        <div class="col-md-4">
 
-<%--        </div>--%>
-<%--    </div>--%>
+        </div>--%>
     <h3 style="margin-top: 20px; margin-bottom: 20px">Địa điểm nổi bật</h3>
-
-
     <div>
        <table>
            <tr>
-
                <td>Tên bài viết</td>
                <td>sao</td>
                <td>Ngày đăng</td>

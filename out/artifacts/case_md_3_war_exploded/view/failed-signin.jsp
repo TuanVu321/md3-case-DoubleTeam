@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
+<%
+    session = request.getSession();
+    String fullname = (String)session.getAttribute("fullname");
+    String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+%>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
         <a class="navbar-branch" id="logo" href="/viewservlet">
@@ -36,9 +41,7 @@
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
-                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
-                                                                                              width="20"
-                                                                                              height="20"></button>
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
                             </span>
                         </div>
                         <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
@@ -73,11 +76,6 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
-                    <a href="#" style="color: white; font-size: 19px">
-                    </a>
-                </li>
-                <li class="nav-item">
                 <li class="nav-item">
                     <%
                         if (fullname == null) {
@@ -86,6 +84,8 @@
                     <%
                     } else {
                     %>
+                </li>
+                <li>
                     <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
                         <%
                             if (typeAccount.equals("admin")) {
@@ -99,11 +99,12 @@
                             }
                         %>
                     </p>
+                </li>
+                <li>
                     <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
                     <%
                         }
                     %>
-                </li>
                 </li>
             </ul>
         </div>

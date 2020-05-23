@@ -79,11 +79,6 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
-                    <a href="#" style="color: white; font-size: 19px">
-                    </a>
-                </li>
-                <li class="nav-item">
                 <li class="nav-item">
                     <%
                         if (fullname == null) {
@@ -109,7 +104,6 @@
                     <%
                         }
                     %>
-                </li>
                 </li>
             </ul>
         </div>

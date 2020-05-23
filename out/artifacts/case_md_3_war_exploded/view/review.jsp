@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 19/05/2020
-  Time: 4:36 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -17,13 +11,18 @@
     <link rel="stylesheet" href="../css/bootstrap-grid.css">
     <link rel="stylesheet" href="../css/bootstrap-reboot.css">
     <link rel="stylesheet" href="../css/review.css">
+    <link rel="stylesheet" href="../css/index.css">
     <title>Chi tiết review</title>
 </head>
 <body>
-
+<%
+    session = request.getSession();
+    String fullname = (String)session.getAttribute("fullname");
+    String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+%>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
-        <a class="navbar-branch" id="logo" href="#">
+        <a class="navbar-branch" id="logo" href="/viewservlet">
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
@@ -35,9 +34,7 @@
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
-                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
-                                                                                              width="20"
-                                                                                              height="20"></button>
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
                             </span>
                         </div>
                         <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
@@ -72,46 +69,55 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
-                    <a href="#" style="color: white; font-size: 19px">
-                    </a>
+                <li class="nav-item">
+                    <%
+                        if (fullname == null) {
+                    %>
+                    <a class="nav-link" style="color: white; font-size: 19px" href="/login?action=signin">Đăng Nhập</a>
+                    <%
+                    } else {
+                    %>
                 </li>
-                <%--                <li class="nav-item">--%>
-                <%--                    <%--%>
-                <%--                        if (fullname == null) {--%>
-                <%--                    %>--%>
-                <%--                    <a class="nav-link" style="color: white; font-size: 19px" href="/login?action=signin">Đăng Nhập</a>--%>
-                <%--                    <%--%>
-                <%--                    } else {--%>
-                <%--                    %>--%>
-
-                <%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
-                <%--                    <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>--%>
-                <%--                        <a id="role" href="/admin_dashboard?role=<%=role%>"--%>
-                <%--                           style="color: red; font-size: 17px"><%=role%>--%>
-                <%--                        </a>--%>
-                <%--                    </p>--%>
-                <%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
-
-                <%--                    <%--%>
-                <%--                        }--%>
-                <%--                    %>--%>
-                <%--                </li>--%>
+                <li>
+                    <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
+                        <%
+                            if (typeAccount.equals("admin")) {
+                        %>
+                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <%
+                        } else {
+                        %>
+                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <%
+                            }
+                        %>
+                    </p>
+                </li>
+                <li>
+                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
+                    <%
+                        }
+                    %>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-<div id="demo" class="carousel slide" data-ride="carousel">
+<div id="banner" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
-        <li data-target="#demo" data-slide-to="0" class="active"></li>
-        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#banner" data-slide-to="0" class="active"></li>
+        <li data-target="#banner" data-slide-to="1"></li>
+        <li data-target="#banner" data-slide-to="2"></li>
     </ul>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="../img/banner2.png">
+            <img src="img/banner2.png">
         </div>
         <div class="carousel-item">
-            <img src="../img/banner3.png">
+            <img src="img/images1.png">
+        </div>
+        <div class="carousel-item">
+            <img src="img/banner3.png">
         </div>
     </div>
 </div>
@@ -132,10 +138,6 @@
             <div style="float: left">Danh gia bai viet</div>
             <div style="float: left">anh sao</div>
         </div>
-
-
-
-
 </div>
 <div class="container-fluid">
 

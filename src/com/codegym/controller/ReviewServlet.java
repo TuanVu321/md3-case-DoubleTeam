@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet(name = "ReviewServlet", urlPatterns = "/review")
 public class ReviewServlet extends HttpServlet {
-    private  ReviewDetails reviewDetails;
+    private  ReviewDetails reviewDetails = new ReviewDetails();;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         showReview(request,response);
 
@@ -34,6 +34,6 @@ public class ReviewServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        showReview(request,response);
     }
 }

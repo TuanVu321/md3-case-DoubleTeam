@@ -146,22 +146,47 @@
 
 
     <div>
-       <table>
-           <tr>
+<%--       <table>--%>
+<%--           <tr>--%>
 
-               <td>Tên bài viết</td>
-               <td>sao</td>
-               <td>Ngày đăng</td>
-           </tr>
-           <C:forEach var="review2" items="${listReview}">
-               <tr>
+<%--               <td>Tên bài viết</td>--%>
+<%--               <td>sao</td>--%>
+<%--               <td>Ngày đăng</td>--%>
+<%--           </tr>--%>
+<%--           <C:forEach var="review2" items="${listReview}">--%>
+<%--               <tr>--%>
 
-                   <td><a href="/review?id=${review2.getId_review()}">${review2.getName()}</a></td>
-                   <td><img src="../img/star.png" width="20px" height="20">${review2.getStar()}</td>
-                   <td>${review2.getDatePost()}</td>
-               </tr>
-           </C:forEach>
-       </table>
+<%--                   <td><a href="/review?id=${review2.getId_review()}">${review2.getName()}</a></td>--%>
+<%--                   <td><img src="../img/star.png" width="20px" height="20">${review2.getStar()}</td>--%>
+<%--                   <td>${review2.getDatePost()}</td>--%>
+<%--               </tr>--%>
+<%--           </C:forEach>--%>
+<%--       </table>--%>
+    <form method="get">
+        <table>
+            <tr>
+
+                <td>Tên bài viết</td>
+                <td>sao</td>
+                <td>Ngày đăng</td>
+            </tr>
+            <c:forEach items="${reviewList}" var="review">
+                <tr>
+                    <td><a href="/review?id=${review.getId_review()}">${review.getName()}</a></td>
+                    <td>${review.getStar()}</td>
+                    <td>${review.getDatePost()}</td>
+                </tr>
+            </c:forEach>
+            <a href="/search?pageid=1">1</a>
+            <a href="/search?pageid=2">2</a>
+            <a href="/search?pageid=3">3</a>
+            <a href="/search?pageid=4">4</a>
+            <a href="/search?pageid=5">5</a>
+            <a href="/search?pageid=6">6</a>
+            <a href="/search?pageid=7">7</a>
+
+        </table>
+    </form>
     </div>
 
 </div>

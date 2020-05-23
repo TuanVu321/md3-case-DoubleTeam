@@ -23,7 +23,7 @@
 
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
-        <a class="navbar-branch" id="logo" href="#">
+        <a class="navbar-branch" id="logo" href="/viewservlet">
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
@@ -76,27 +76,34 @@
                     <a href="#" style="color: white; font-size: 19px">
                     </a>
                 </li>
-                <%--                <li class="nav-item">--%>
-                <%--                    <%--%>
-                <%--                        if (fullname == null) {--%>
-                <%--                    %>--%>
-                <%--                    <a class="nav-link" style="color: white; font-size: 19px" href="/login?action=signin">Đăng Nhập</a>--%>
-                <%--                    <%--%>
-                <%--                    } else {--%>
-                <%--                    %>--%>
-
-                <%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
-                <%--                    <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>--%>
-                <%--                        <a id="role" href="/admin_dashboard?role=<%=role%>"--%>
-                <%--                           style="color: red; font-size: 17px"><%=role%>--%>
-                <%--                        </a>--%>
-                <%--                    </p>--%>
-                <%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
-
-                <%--                    <%--%>
-                <%--                        }--%>
-                <%--                    %>--%>
-                <%--                </li>--%>
+                <li class="nav-item">
+                <li class="nav-item">
+                    <%
+                        if (fullname == null) {
+                    %>
+                    <a class="nav-link" style="color: white; font-size: 19px" href="/login?action=signin">Đăng Nhập</a>
+                    <%
+                    } else {
+                    %>
+                    <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
+                        <%
+                            if (typeAccount.equals("admin")) {
+                        %>
+                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <%
+                        } else {
+                        %>
+                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <%
+                            }
+                        %>
+                    </p>
+                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
+                    <%
+                        }
+                    %>
+                </li>
+                </li>
             </ul>
         </div>
     </div>

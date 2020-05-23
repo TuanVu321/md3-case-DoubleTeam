@@ -77,27 +77,27 @@
                     <a href="#" style="color: white; font-size: 19px">
                     </a>
                 </li>
-<%--                <li class="nav-item">--%>
-<%--                    <%--%>
-<%--                        if (fullname == null) {--%>
-<%--                    %>--%>
-<%--                    <a class="nav-link" style="color: white; font-size: 19px" href="/login?action=signin">Đăng Nhập</a>--%>
-<%--                    <%--%>
-<%--                    } else {--%>
-<%--                    %>--%>
+                <%--                <li class="nav-item">--%>
+                <%--                    <%--%>
+                <%--                        if (fullname == null) {--%>
+                <%--                    %>--%>
+                <%--                    <a class="nav-link" style="color: white; font-size: 19px" href="/login?action=signin">Đăng Nhập</a>--%>
+                <%--                    <%--%>
+                <%--                    } else {--%>
+                <%--                    %>--%>
 
-<%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
-<%--                    <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>--%>
-<%--                        <a id="role" href="/admin_dashboard?role=<%=role%>"--%>
-<%--                           style="color: red; font-size: 17px"><%=role%>--%>
-<%--                        </a>--%>
-<%--                    </p>--%>
-<%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
+                <%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
+                <%--                    <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>--%>
+                <%--                        <a id="role" href="/admin_dashboard?role=<%=role%>"--%>
+                <%--                           style="color: red; font-size: 17px"><%=role%>--%>
+                <%--                        </a>--%>
+                <%--                    </p>--%>
+                <%--                    <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>--%>
 
-<%--                    <%--%>
-<%--                        }--%>
-<%--                    %>--%>
-<%--                </li>--%>
+                <%--                    <%--%>
+                <%--                        }--%>
+                <%--                    %>--%>
+                <%--                </li>--%>
             </ul>
         </div>
     </div>
@@ -142,26 +142,26 @@
 
 <%--        </div>--%>
 <%--    </div>--%>
-    <h3 style="margin-top: 20px; margin-bottom: 20px">Địa điểm nổi bật</h3>
+<h3 style="margin-top: 20px; margin-bottom: 20px">Địa điểm nổi bật</h3>
 
 
-    <div>
-<%--       <table>--%>
-<%--           <tr>--%>
+<div>
+    <%--       <table>--%>
+    <%--           <tr>--%>
 
-<%--               <td>Tên bài viết</td>--%>
-<%--               <td>sao</td>--%>
-<%--               <td>Ngày đăng</td>--%>
-<%--           </tr>--%>
-<%--           <C:forEach var="review2" items="${listReview}">--%>
-<%--               <tr>--%>
+    <%--               <td>Tên bài viết</td>--%>
+    <%--               <td>sao</td>--%>
+    <%--               <td>Ngày đăng</td>--%>
+    <%--           </tr>--%>
+    <%--           <C:forEach var="review2" items="${listReview}">--%>
+    <%--               <tr>--%>
 
-<%--                   <td><a href="/review?id=${review2.getId_review()}">${review2.getName()}</a></td>--%>
-<%--                   <td><img src="../img/star.png" width="20px" height="20">${review2.getStar()}</td>--%>
-<%--                   <td>${review2.getDatePost()}</td>--%>
-<%--               </tr>--%>
-<%--           </C:forEach>--%>
-<%--       </table>--%>
+    <%--                   <td><a href="/review?id=${review2.getId_review()}">${review2.getName()}</a></td>--%>
+    <%--                   <td><img src="../img/star.png" width="20px" height="20">${review2.getStar()}</td>--%>
+    <%--                   <td>${review2.getDatePost()}</td>--%>
+    <%--               </tr>--%>
+    <%--           </C:forEach>--%>
+    <%--       </table>--%>
     <form method="get">
         <table>
             <tr>
@@ -177,17 +177,10 @@
                     <td>${review.getDatePost()}</td>
                 </tr>
             </c:forEach>
-            <a href="/search?pageid=1">1</a>
-            <a href="/search?pageid=2">2</a>
-            <a href="/search?pageid=3">3</a>
-            <a href="/search?pageid=4">4</a>
-            <a href="/search?pageid=5">5</a>
-            <a href="/search?pageid=6">6</a>
-            <a href="/search?pageid=7">7</a>
 
         </table>
     </form>
-    </div>
+</div>
 
 </div>
 <div class="container-fluid">

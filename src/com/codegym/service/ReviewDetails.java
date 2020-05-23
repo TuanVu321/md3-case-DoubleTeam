@@ -114,13 +114,32 @@ public class ReviewDetails extends ConnectionJDBC implements IReviewDetails {
     }
 
     @Override
-    public List<Review> getListByPage(List<Review> List, int first, int last) {
-        List<Review> ListReview = new ArrayList<>();
-        for (int i = first; i <last ; i++) {
-            ListReview.add(List.get(i));
+    public List<Review> createReviewListPagnigation(int start, int stop) {
+        List<Review> reviewList = new ArrayList<>();
+        try{
+            Connection connection = getConnection();
+            String sql = "select id_review, name_review, titleposts, content, dateposts, pointevaluate, picture from c0220h1dbt.postsreview limit ?, ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,start);
+            preparedStatement.setInt(2,stop);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                int id_review = rs.getInt("id_review");
+                String name = rs.getString("name_review");
+                String title = rs.getString("titleposts");
+                String content = rs.getString("content");
+                Date datePost = rs.getDate("dateposts");
+                int star = rs.getInt("pointevaluate");
+                String picture = rs.getString("picture");
+                reviewList.add(new Review(id_review, name, title, content, datePost, star, picture));
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-        return ListReview;
+        return reviewList;
     }
+
 
 
 

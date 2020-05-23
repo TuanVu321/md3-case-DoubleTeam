@@ -27,11 +27,11 @@ import com.codegym.service.ReviewServletImpl;
 public class AdminServlet extends HttpServlet {
     private final DatabaseServiceImpl databaseService = new DatabaseServiceImpl();
     private final ReviewServletImpl reviewServlet = new ReviewServletImpl();
-    private static final String SELECT_ALL_ACCOUNTS = "select * from datareview.account;";
-    private static final String CREATE_NEW_ACCOUNT = "insert into datareview.account(" +
+    private static final String SELECT_ALL_ACCOUNTS = "select * from c0220h1dbt.account;";
+    private static final String CREATE_NEW_ACCOUNT = "insert into c0220h1dbt.account(" +
                                                                             "id_role, username, password, fullname, phone, email, address, active, online) " +
                                                                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    private static final String SET_ACTIVE = "update datareview.account set active = 1 where username = ?;";
+    private static final String SET_ACTIVE = "update c0220h1dbt.account set active = 1 where username = ?;";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
@@ -106,7 +106,7 @@ public class AdminServlet extends HttpServlet {
 
 
         //reviewServlet.createNewReview(id_destination, id_account, name_review, title, content, picture, point_value, dateObj);
-        String query_update = "update datareview.postsreview set id_destinations = ?, id_account = ?, name_review = ?, titleposts = ?, picture = ?, content = ?, pointevaluate = ?, dateposts = ? " +
+        String query_update = "update c0220h1dbt.postsreview set id_destinations = ?, id_account = ?, name_review = ?, titleposts = ?, picture = ?, content = ?, pointevaluate = ?, dateposts = ? " +
                                         " where name_review = ?";
         try {
             Connection conn = databaseService.setCheckForeignKey();
@@ -138,7 +138,7 @@ public class AdminServlet extends HttpServlet {
 
     private void showEditPostReview(HttpServletRequest request, HttpServletResponse response) {
         int id_review = Integer.parseInt(request.getParameter("id_review"));
-        String sql_query = "select id_destinations, id_account, name_review, titleposts, picture, content, pointevaluate, dateposts from datareview.postsreview " +
+        String sql_query = "select id_destinations, id_account, name_review, titleposts, picture, content, pointevaluate, dateposts from c0220h1dbt.postsreview " +
                                   "where id_review = ?;";
        /* int id_destination = Integer.parseInt(request.getParameter("id_review"));
         int id_account = Integer.parseInt(request.getParameter("id_account"));

@@ -141,7 +141,7 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher dispatcher = null;
             String typeAccount = null;
             if (inforUser != null) {
-                String typeAccount_sql = "select role from datareview.account inner join datareview.role using(id_role) where datareview.account.username = ?";
+                String typeAccount_sql = "select role from c0220h1dbt.account inner join c0220h1dbt.role using(id_role) where c0220h1dbt.account.username = ?";
                 Connection conn = databaseService.createConnection();
                 try {
                     PreparedStatement pstmt = conn.prepareStatement(typeAccount_sql);

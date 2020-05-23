@@ -21,9 +21,9 @@ public class ConnectionJDBC {
             throwables.printStackTrace();
         }
         if(connection!=null){
-            System.out.println("thanh cong");
+            System.out.println("Data connection successful");
         }else {
-            System.out.println("that bai");
+            System.out.println("Data connection failed");
         }
         return connection;
     }

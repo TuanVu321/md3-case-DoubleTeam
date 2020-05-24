@@ -14,7 +14,9 @@ public class Review {
     int star;
     String picture;
 
-    public Review() {}
+    public Review(int id_account) {
+        this.id_account = id_account;
+    }
 
     public Review(int id_review, String name, String destinations,  String title, int star, String picture) {
         this.id_review = id_review;
@@ -23,6 +25,16 @@ public class Review {
         this.title = title;
         this.star = star;
         this.picture = picture;
+    }
+
+    public Review(int id_destination, int id_account, String name, String title, String content, String picture, int point) {
+        this.id_destination = id_destination;
+        this.id_account = id_account;
+        this.name = name;
+        this.title = title;
+        this.content = content;
+        this.picture = picture;
+        this.star = point;
     }
 
     public Review(int id_destination, int id_account, String name, String title, String content, Date datePost, int star, String picture) {

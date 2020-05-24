@@ -7,14 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    String test = (String)request.getAttribute("fullnameUser");
-%>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>welcome to</title>
+    <title>Tạo Post Review Mới</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/bootstrap-grid.css">
     <link rel="stylesheet" href="../css/bootstrap-reboot.css">
@@ -23,6 +20,7 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="../css/confirm-email.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
 <%
@@ -32,7 +30,7 @@
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
-        <a class="navbar-branch" id="logo" href="/viewservlet">
+        <a class="navbar-branch" id="logo" href="#">
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
@@ -44,7 +42,9 @@
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
-                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
+                                                                                              width="20"
+                                                                                              height="20"></button>
                             </span>
                         </div>
                         <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
@@ -79,6 +79,10 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
+                    <a href="#" style="color: white; font-size: 19px">
+                    </a>
+                </li>
                 <li class="nav-item">
                     <%
                         if (fullname == null) {
@@ -87,8 +91,6 @@
                     <%
                     } else {
                     %>
-                </li>
-                <li>
                     <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
                         <%
                             if (typeAccount.equals("admin")) {
@@ -102,8 +104,6 @@
                             }
                         %>
                     </p>
-                </li>
-                <li>
                     <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
                     <%
                         }
@@ -114,14 +114,28 @@
     </div>
 </nav>
 <div class="container">
-    <div id="main" class="formConfirm">
-        <div id="successLoggIn">
-            <h1 class="success">Chào Mừng <span id="nameLogIn">${fullnameUser}</span> !!!</h1>
-            <p class="success">Bạn đã đăng nhập thành công, click vào đường link dưới đây để quay về trang chủ</p>
-            <form method="get" action="/viewservlet">
-                <input type="submit" value="Quay Ve Trang Chu"/>
-            </form>
-        </div>
+    <div id="create-new" class="formConfirm dashboard">
+        <h1>Chỉnh Sửa Post Review</h1>
+        <button>
+            <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
+                Dashboard</a>
+        </button>
+        <form method="post">
+            <label>id_Destination:</label>
+            <input type="text" name="destination" value="${oldReview.getId_destination()}"/><br/>
+            <label>Name Rieview:</label>
+            <input type="text" name="nameReview" value="${oldReview.getName()}"/><br/>
+            <label>Title Posts:</label>
+            <textarea name="title" rows="5" cols="40">${oldReview.getTitle()}</textarea><br/>
+            <label>Picture:</label>
+            <input type="text" name="picture" value="${oldReview.getPicture()}"/><br/>
+            <label>Content:</label>
+            <textarea name="content" rows="5" cols="40">${oldReview.getContent()}</textarea><br/>
+            <label>Point values:</label>
+            <input type="text" name="point" value="${oldReview.getStar()}"/><br/>
+            <label>Date Posts:</label>
+            <input type="submit" value="Cập Nhật"/>
+        </form>
     </div>
 </div>
 <div class="container-fluid" style="background: black; height: 500px; margin-top: 20px">

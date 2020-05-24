@@ -12,15 +12,12 @@
     <title>Account Admin</title>
 </head>
 <body>
-<<<<<<< HEAD
 <%
     session = request.getSession();
     String fullname = (String)session.getAttribute("fullname");
     String typeAccount = (String)session.getAttribute("typeAccountLogIn");
     int count = 1;
 %>
-=======
->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
 <div class="container">
     <div id="contain-dashboard" class="formConfirm dashboard">
             <h2>Quản Lý Tài Khoản Thành Viên</h2>

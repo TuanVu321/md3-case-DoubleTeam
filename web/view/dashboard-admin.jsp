@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.codegym.model.SignupAccount" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: harrynguyen
   Date: 17/05/2020
@@ -27,10 +28,15 @@
     session = request.getSession();
     String fullname = (String)session.getAttribute("fullname");
     String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+    int count = 1;
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
+<<<<<<< HEAD
+        <a class="navbar-branch" id="logo" href="#">
+=======
         <a class="navbar-branch" id="logo" href="/viewservlet">
+>>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
@@ -79,6 +85,10 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
+                    <a href="#" style="color: white; font-size: 19px">
+                    </a>
+                </li>
                 <li class="nav-item">
                     <%
                         if (fullname == null) {
@@ -113,11 +123,14 @@
     <div id="contain-dashboard" class="formConfirm dashboard">
         <h1>Dashboard Admin</h1>
         <button><a href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>">Account Dashboard</a></button>
-        <button><a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=1">PostReview Dashboard</a></button>
+        <button><a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview Dashboard</a></button>
         <div id="contain-switch">
             <h2>Quản Lý Tài Khoản Thành Viên</h2>
-            <a href="/admin_dashboard?action=create&account=<%=fullname%>&role=<%=session.getAttribute("typeAccountLogIn")%>">Tạo
-                Tài Khoản Mới</a>
+            <form method="post" action="/admin_dashboard?action=search">
+                <label>Nhập Username để tìm kiếm:</label>
+                <input type="text" id="search" name="usernameSearch"/>
+                <button type="submit">Search</button>
+            </form>
             <table>
                 <tr>
                     <th id="stt">STT</th>
@@ -128,11 +141,11 @@
                     <th id="email">Email</th>
                     <th id="address">Địa Chỉ</th>
                     <th id="account">Kiểu Tài Khoản</th>
-                    <th id="update">Cập Nhật Thông Tin</th>
+                    <th id="update">Trạng Thái</th>
                 </tr>
                 <c:forEach items="${accountList}" var="account">
                     <tr>
-                        <td></td>
+                        <td><%=count++%></td>
                         <td>${account.getFullname()}</td>
                         <td>${account.getUsername()}</td>
                         <td>${account.getPassword()}</td>
@@ -140,14 +153,25 @@
                         <td>${account.getEmail()}</td>
                         <td>${account.getAddress()}</td>
                         <td>${account.getId_role()}</td>
+                        <c:choose>
+                            <c:when test="${account.isActived() == 1}">
+                                <td>
+                                    "Tài Khoản đang kích hoạt"
+                                </td>
+                            </c:when>
+                            <c:otherwise>
+                                <td>
+                                    "Tài Khoản đã bị khóa"
+                                </td>
+                            </c:otherwise>
+                        </c:choose>
                         <td>
-                            <button><a href="/admin_dashboard?action=edit&usernameAcc=${account.getUsername()}">Edit</a>
-                            </button>
+                            <form action="post">
+                                <a href="/admin_dashboard?action=actived&usernameAcc=${account.getUsername()}">Actived</a>
+                            </form>
                         </td>
                         <td>
-                            <button><a
-                                    href="/admin_dashboard?action=delete&usernameAcc=${account.getUsername()}">Delete</a>
-                            </button>
+                                <a href="/admin_dashboard?action=blocked&usernameAcc=${account.getUsername()}">Blocked</a>
                         </td>
                     </tr>
                 </c:forEach>

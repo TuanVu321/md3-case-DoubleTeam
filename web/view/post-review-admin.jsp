@@ -32,10 +32,16 @@
     session = request.getSession();
     String fullname = (String)session.getAttribute("fullname");
     String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+    int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+    int count = 1;
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
+<<<<<<< HEAD
+        <a class="navbar-branch" id="logo" href="#">
+=======
         <a class="navbar-branch" id="logo" href="/viewservlet">
+>>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
@@ -47,7 +53,13 @@
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
+<<<<<<< HEAD
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
+                                                                                              width="20"
+                                                                                              height="20"></button>
+=======
                                 <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
+>>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
                             </span>
                         </div>
                         <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
@@ -82,6 +94,10 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
+                    <a href="#" style="color: white; font-size: 19px">
+                    </a>
+                </li>
                 <li class="nav-item">
                     <%
                         if (fullname == null) {
@@ -120,12 +136,16 @@
     <h1>Dashboard Admin</h1>
     <button><a href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>">Account
         Dashboard</a></button>
-    <button><a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=1">PostReview
+    <button><a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
         Dashboard</a></button>
     <br/>
     <h2>Quản Lý Bài Viết Review</h2>
     <a href="/admin_dashboard?action=showNewReviewForm&account=<%=fullname%>&role=<%=session.getAttribute("typeAccountLogIn")%>">Tạo
         Bài Viết Mới</a>
+    <form method="post" action="/admin_dashboard?action=searchReview">
+        <label>Nhập Tên Địa Điểm Để Tìm Kiếm Bài Viết Review:</label><input type="text" name="searchName"/><br/>
+        <input type="submit" value="Tìm Kiếm"/>
+    </form>
     <table>
         <thead>
         <tr>
@@ -137,9 +157,9 @@
         <tbody>
         <c:forEach items="${reviewList}" var="review">
             <tr>
-                <td></td>
+                <td><%=count++%></td>
                 <td>${review.getName()}</td>
-                <td>${review.getTitle()}</td>
+                <td id="titleReview">${review.getTitle()}</td>
                 <td>
                     <button>
                         <a href="/admin_dashboard?action=editPostReview&id_review=${review.getId_review()}">Edit</a>
@@ -147,20 +167,19 @@
                 </td>
                 <td>
                     <button><a
-                            href="/admin_dashboard?action=delete&usernameAcc=${review.getName()}">Delete</a>
+                            href="/admin_dashboard?action=deleteReview&id_review=${review.getId_review()}&pageNo=<%=pageNo%>">Delete</a>
                     </button>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=1">1</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=2">2</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=3">3</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=4">4</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=5">5</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=6">6</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=7">7</a>
+    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">1</a>
+    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=2">2</a>
+    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=3">3</a>
+    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=4">4</a>
+    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=5">5</a>
+    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=6">6</a>
 </div>
 <div class="container-fluid" style="background: black; height: 500px; margin-top: 20px">
     <div style=" width: 700px; height: 450px; margin: 25px auto; text-align: center">

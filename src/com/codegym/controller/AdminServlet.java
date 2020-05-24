@@ -8,14 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Date;
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.codegym.model.Review;
@@ -32,6 +35,7 @@ public class AdminServlet extends HttpServlet {
                                                                             "id_role, username, password, fullname, phone, email, address, active, online) " +
                                                                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SET_ACTIVE = "update c0220h1dbt.account set active = 1 where username = ?;";
+    private static final String SET_BLOCK = "update c0220h1dbt.account set active = 0 where username = ?;";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
@@ -41,6 +45,15 @@ public class AdminServlet extends HttpServlet {
         }
 
         switch (action) {
+            case "search":
+                searchByName(request, response);
+                break;
+            case "actived":
+                activeAccount(request, response);
+                break;
+            case "blocked":
+                blockAccount(request, response);
+                break;
             case "showAccountsList":
                 showDashboard(request, response);
                 break;
@@ -52,6 +65,9 @@ public class AdminServlet extends HttpServlet {
                 break;
             case "delete":
                 deleteAccount(request, response);
+                break;
+            case "deleteReview":
+                deleteReview(request, response);
                 break;
             case "showReviewList":
                 showReview(request, response);
@@ -71,12 +87,33 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            ex.printStackTrace();
+        }
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
         }
 
         switch (action) {
+            case "searchReview":
+                searchReview(request, response);
+                break;
+            case "deleteReview":
+                deleteReview(request, response);
+                break;
+            case "search":
+                searchByName(request, response);
+                break;
+            case "actived":
+                activeAccount(request, response);
+                break;
+            case "blocked":
+                blockAccount(request, response);
+                break;
             case "create":
                 createNewAccount(request, response);
                 break;
@@ -94,44 +131,146 @@ public class AdminServlet extends HttpServlet {
         }
     }
 
-    private void editPostreview(HttpServletRequest request, HttpServletResponse response) {
-        int destination = Integer.parseInt(request.getParameter("destination"));
-        int id_account = Integer.parseInt(request.getParameter("id_account"));
-        String nameReview = request.getParameter("nameReview");
-        String title = request.getParameter("title");
-        String picture = request.getParameter("picture");
-        String content = request.getParameter("content");
-        int point = Integer.parseInt(request.getParameter("point"));
-        String date = request.getParameter("dateposts");
-
-
-        //reviewServlet.createNewReview(id_destination, id_account, name_review, title, content, picture, point_value, dateObj);
-        String query_update = "update c0220h1dbt.postsreview set id_destinations = ?, id_account = ?, name_review = ?, titleposts = ?, picture = ?, content = ?, pointevaluate = ?, dateposts = ? " +
-                                        " where name_review = ?";
+    private void searchReview(HttpServletRequest request, HttpServletResponse response) {
+        String search_query = "select * from c0220h1dbt.postsreview where titleposts like ? or name_review = ?;";
+        Connection conn = databaseService.setCheckForeignKey();
+        List<Review> reviewList = new ArrayList<>();
+        int id_review = 0;
+        String name = "";
+        String title = "";
+        String content = "";
+        Date datePost = null;
+        int star = 0;
+        String picture = "";
         try {
-            Connection conn = databaseService.setCheckForeignKey();
-            PreparedStatement pstmt = conn.prepareStatement(query_update);
-            pstmt.setInt(1, destination);
-            pstmt.setInt(2, id_account);
-            pstmt.setString(3, nameReview);
-            pstmt.setString(4, title);
-            pstmt.setString(5, picture);
-            pstmt.setString(6, content);
-            pstmt.setInt(7, point);
-            java.util.Date dateObj = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-            java.sql.Date dateSQL = new java.sql.Date(dateObj.getTime());
-            pstmt.setDate(8, dateSQL);
-            pstmt.setString(9, nameReview);
+            String namePlace = request.getParameter("searchName");
+            PreparedStatement pstmt = conn.prepareStatement(search_query);
+            pstmt.setString(1, "%" + namePlace + "%");
+            pstmt.setString(2, "%" + namePlace + "%");
 
-            pstmt.executeUpdate();
+            ResultSet rs = pstmt.executeQuery();
+            Review review = null;
+            while (rs.next()) {
+                id_review = rs.getInt("id_review");
+                name = rs.getString("name_review");
+                title = rs.getString("titleposts");
+                content = rs.getString("content");
+                datePost = rs.getDate("dateposts");
+                star = rs.getInt("pointevaluate");
+                picture = rs.getString("picture");
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("view/create-new-postreview.jsp");
+                review = new Review(id_review, name, title, content, datePost, star, picture);
+                reviewList.add(review);
+            }
+
+            request.setAttribute("reviewList", reviewList);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("view/serach-postreview.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (ServletException | IOException ex) {
             ex.printStackTrace();
-        } catch (ParseException ex) {
+        }
+    }
+
+    private void deleteReview(HttpServletRequest request, HttpServletResponse response) {
+        int id_review = Integer.parseInt(request.getParameter("id_review"));
+        String delete_query = "delete from c0220h1dbt.postsreview where id_review = ?;";
+        Connection conn = databaseService.setCheckForeignKey();
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(delete_query);
+            pstmt.setInt(1, id_review);
+            pstmt.executeUpdate();
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_dashboard?action=showReviewList");
+            try {
+                dispatcher.forward(request, response);
+            } catch (IOException | ServletException ex) {
+                ex.printStackTrace();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void searchByName(HttpServletRequest request, HttpServletResponse response) {
+        String search_query = "select * from c0220h1dbt.account where username = ?;";
+        Connection conn = databaseService.setCheckForeignKey();
+        try {
+            String username = request.getParameter("usernameSearch");
+            PreparedStatement pstmt = conn.prepareStatement(search_query);
+            pstmt.setString(1, username);
+
+            ResultSet rs = pstmt.executeQuery();
+            List<SignupAccount> listAccount = getAccountList(rs);
+
+            request.setAttribute("listAccount", listAccount);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("view/result-search.jsp");
+            dispatcher.forward(request, response);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ServletException | IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void activeAccount(HttpServletRequest request, HttpServletResponse response) {
+        Connection conn = databaseService.setCheckForeignKey();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SET_ACTIVE);
+            String usernameAcc = request.getParameter("usernameAcc");
+            pstmt.setString(1, usernameAcc);
+            pstmt.executeUpdate();
+
+            showDashboard(request, response);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void blockAccount(HttpServletRequest request, HttpServletResponse response) {
+        Connection conn = databaseService.setCheckForeignKey();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SET_BLOCK);
+            String usernameAcc = request.getParameter("usernameAcc");
+            pstmt.setString(1, usernameAcc);
+            pstmt.executeUpdate();
+
+            showDashboard(request, response);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void editPostreview(HttpServletRequest request, HttpServletResponse response) {
+        int destination = Integer.parseInt(request.getParameter("destination"));
+        //int id_account = Integer.parseInt(request.getParameter("id_account"));
+        String nameReview = request.getParameter("nameReview");
+        String title = request.getParameter("title");
+        String picture = request.getParameter("picture");
+        String content = request.getParameter("content");
+        int point = Integer.parseInt(request.getParameter("point"));
+
+        String query_update = "update c0220h1dbt.postsreview set id_destinations = ?, name_review = ?, titleposts = ?, picture = ?, content = ?, pointevaluate = ? " +
+                                        " where id_destinations = ?";
+        try {
+            Connection conn = databaseService.setCheckForeignKey();
+            PreparedStatement pstmt = conn.prepareStatement(query_update);
+            pstmt.setInt(1, destination);
+            pstmt.setString(2, nameReview);
+            pstmt.setString(3, title);
+            pstmt.setString(4, picture);
+            pstmt.setString(5, content);
+            pstmt.setInt(6, point);
+            pstmt.setInt(7, destination);
+
+            pstmt.executeUpdate();
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("view/edit-postreview.jsp");
+            dispatcher.forward(request, response);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ServletException | IOException ex) {
             ex.printStackTrace();
         }
     }
@@ -140,21 +279,11 @@ public class AdminServlet extends HttpServlet {
         int id_review = Integer.parseInt(request.getParameter("id_review"));
         String sql_query = "select id_destinations, id_account, name_review, titleposts, picture, content, pointevaluate, dateposts from c0220h1dbt.postsreview " +
                                   "where id_review = ?;";
-       /* int id_destination = Integer.parseInt(request.getParameter("id_review"));
-        int id_account = Integer.parseInt(request.getParameter("id_account"));
-        String nameReview = request.getParameter("nameReview");
-        String title = request.getParameter("title");
-        String picture = request.getParameter("picture");
-        String content = request.getParameter("content");
-        int point = Integer.parseInt(request.getParameter("point"));
-        String date = request.getParameter("dateposts");*/
         try {
             Connection conn = databaseService.setCheckForeignKey();
             PreparedStatement pstmt = conn.prepareStatement(sql_query);
             pstmt.setInt(1, id_review);
             ResultSet rs = pstmt.executeQuery();
-            /*java.sql.Date sqlDate = rs.getDate("date");*/
-            /*java.util.Date dateObj = new SimpleDateFormat("yyyy-MM-dd").parse(date);*/
             java.util.Date now = new java.util.Date();
             java.util.Date utilDate = new java.util.Date(now.getTime());
             Review oldReview = null;
@@ -168,7 +297,8 @@ public class AdminServlet extends HttpServlet {
                 String content = rs.getString("content");
                 int pointevaluate = rs.getInt("pointevaluate");
 
-                oldReview = reviewServlet.createNewReview(id_destination, id_account, name_review, titleposts, content, picture, pointevaluate, utilDate);
+                //oldReview = reviewServlet.createNewReview(id_destination, id_account, name_review, titleposts, content, picture, pointevaluate, utilDate);
+                oldReview = new Review(id_destination, id_account, name_review, titleposts, picture, content, pointevaluate);
             }
 
             request.setAttribute("oldReview", oldReview);
@@ -192,16 +322,17 @@ public class AdminServlet extends HttpServlet {
 
     private void createNewPostReview(HttpServletRequest request, HttpServletResponse response) {
         int id_destination = Integer.parseInt(request.getParameter("destination"));
-        int id_account = Integer.parseInt(request.getParameter("id_account"));
         String name_review = request.getParameter("nameReview");
         String title = request.getParameter("title");
         String picture = request.getParameter("picture");
         String content = request.getParameter("content");
         int point_value = Integer.parseInt(request.getParameter("point"));
-        String date = request.getParameter("dateposts");
+        LocalDateTime currentDate = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_DATE_TIME;
+        String formatterDate = currentDate.format(dateTimeFormatter);
         try {
-        java.util.Date dateObj = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-        reviewServlet.createNewReview(id_destination, id_account, name_review, title, content, picture, point_value, dateObj);
+        java.util.Date dateObj = new SimpleDateFormat("yyyy-MM-dd").parse(formatterDate);
+        reviewServlet.createNewReview(id_destination, 1, name_review, title, content, picture, point_value, dateObj);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/create-new-postreview.jsp");
         dispatcher.forward(request, response);
@@ -213,7 +344,7 @@ public class AdminServlet extends HttpServlet {
     }
 
     private void showReview(HttpServletRequest request, HttpServletResponse response) {
-        String spageid = request.getParameter("page");
+        String spageid = request.getParameter("pageNo");
         int pageid = Integer.parseInt(spageid);
         int total = 10;
 
@@ -339,6 +470,7 @@ public class AdminServlet extends HttpServlet {
         String phone = "";
         String email = "";
         String address = "";
+        int active = 0;
         try {
             while (rs.next()) {
                 id_role = rs.getInt("id_role");
@@ -348,7 +480,8 @@ public class AdminServlet extends HttpServlet {
                 phone = rs.getString("phone");
                 email = rs.getString("email");
                 address = rs.getString("address");
-                accountList.add(new SignupAccount(id_role, username, password, fullname, phone, email, address));
+                active = rs.getInt("active");
+                accountList.add(new SignupAccount(id_role, username, password, fullname, phone, email, address, active));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

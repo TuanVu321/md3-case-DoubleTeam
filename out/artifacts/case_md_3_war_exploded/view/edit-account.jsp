@@ -7,14 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    String test = (String)request.getAttribute("fullnameUser");
-%>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>welcome to</title>
+    <title>Edit Account</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/bootstrap-grid.css">
     <link rel="stylesheet" href="../css/bootstrap-reboot.css">
@@ -23,6 +20,7 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="../css/confirm-email.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
 <%
@@ -30,26 +28,19 @@
     String fullname = (String)session.getAttribute("fullname");
     String typeAccount = (String)session.getAttribute("typeAccountLogIn");
 %>
-<nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
+<nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
-        <a class="navbar-branch" id="logo" href="/viewservlet">
-            <img src="img/logoDBT2.png" height="40"/></a>
+        <a class="navbar-branch" id="logo" href="#">
+            <img src="../img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
             <samp class="navbar-toggler-icon"></samp>
         </button>
-        <div class="collapse navbar-collapse  " id="navbarResponsive">
-            <div style="width: 350px; height: 40px; margin-right: 20px">
-                <form method="post" action="/search">
-                    <div class="search-box input-group form-group">
-                        <div class="input-group-prepend " style="height: 40px">
-                            <span class="input-group-text search-btn">
-                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
-                            </span>
-                        </div>
-                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
-                    </div>
-                </form>
+        <div class="collapse navbar-collapse " id="navbarResponsive">
+            <div class="search-box">
+                <input class="form-control" placeholder="Search" type="text">
+                <button class="btn btn-link search-btn"><i class="fa fa-search"></i>
+                </button>
             </div>
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
@@ -87,23 +78,9 @@
                     <%
                     } else {
                     %>
-                </li>
-                <li>
                     <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
-                        <%
-                            if (typeAccount.equals("admin")) {
-                        %>
-                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
-                        <%
-                        } else {
-                        %>
-                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
-                        <%
-                            }
-                        %>
+                        <a id="role" href="#" style="color: red; font-size: 17px"><%=typeAccount%></a>
                     </p>
-                </li>
-                <li>
                     <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
                     <%
                         }
@@ -114,14 +91,24 @@
     </div>
 </nav>
 <div class="container">
-    <div id="main" class="formConfirm">
-        <div id="successLoggIn">
-            <h1 class="success">Chào Mừng <span id="nameLogIn">${fullnameUser}</span> !!!</h1>
-            <p class="success">Bạn đã đăng nhập thành công, click vào đường link dưới đây để quay về trang chủ</p>
-            <form method="get" action="/viewservlet">
-                <input type="submit" value="Quay Ve Trang Chu"/>
-            </form>
-        </div>
+    <div id="create-new" class="formConfirm dashboard">
+        <h1>Edit Account</h1>
+        <a href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=${role}">Quay Về Trang Dashboard Admin</a>
+        <form method="post">
+            <label>Fullname:</label>
+            <input type="text" name="fullname" value="${account.getFullname()}"/><br/>
+            <label>Username:</label>
+            <input type="text" name="username" value="${account.getUsername()}"/><br/>
+            <label>Password:</label>
+            <input type="text" name="password" value="${account.getPassword()}"/><br/>
+            <label>Phone:</label>
+            <input type="text" name="phone" value="${account.getPhonenumber()}"/><br/>
+            <label>Email:</label>
+            <input type="text" name="email" value="${account.getEmail()}"/><br/>
+            <label>Address:</label>
+            <input type="text" name="address" value="${account.getAddress()}"/><br/>
+            <input type="submit" value="Cập Nhật"/>
+        </form>
     </div>
 </div>
 <div class="container-fluid" style="background: black; height: 500px; margin-top: 20px">

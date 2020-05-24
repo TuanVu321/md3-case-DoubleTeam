@@ -52,11 +52,30 @@
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" style="color: white; font-size: 19px"
+<<<<<<< HEAD
+                       href="/viewservlet">Trang chủ
+=======
                        href="/viewservlet">Trang Chủ
+>>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
                         <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
+<<<<<<< HEAD
+                       href="/search">Review</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="https://tago.vn/">Hot tour</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="https://www.vntrip.vn/ve-may-bay">Vé máy bay</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="https://www.booking.com/">Khách sạn</a>
+=======
                        href="/search" methods="get">Review</a>
                 </li>
                 <li class="nav-item">
@@ -74,6 +93,7 @@
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
                        href="https://dichungtaxi.com/">Di Chuyển</a>
+>>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -115,14 +135,12 @@
     <div id="create-new" class="formConfirm dashboard">
         <h1>Tạo Bài Post Review mới</h1>
         <button>
-            <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=1">PostReview
+            <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
             Dashboard</a>
         </button>
         <form method="post">
             <label>id_Destination:</label>
             <input type="text" name="destination"/><br/>
-            <label>id_Account:</label>
-            <input type="text" name="id_account"/><br/>
             <label>Name Review:</label>
             <input type="text" name="nameReview"/><br/>
             <label>Title Posts:</label>
@@ -133,8 +151,6 @@
             <textarea name="content" rows="5" cols="40"></textarea><br/>
             <label>Point values:</label>
             <input type="text" name="point"/><br/>
-            <label>Date Posts:</label>
-            <input type="date" name="dateposts"/>
             <input type="submit" value="Tạo PostReview"/>
         </form>
     </div>

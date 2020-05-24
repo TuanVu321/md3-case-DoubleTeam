@@ -10,7 +10,7 @@ public class MySQLConnect extends ConnectionTemplate {
     private static String jdbcURL = "jdbc:mysql://localhost:3306/c0220h1dbt";
 
     private static String user = "root";
-    private static String password = "123456";
+    private static String password = "12345678";
 
     public MySQLConnect(String jdbcURL) {
         MySQLConnect.jdbcURL = jdbcURL;

@@ -37,7 +37,11 @@
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
+<<<<<<< HEAD
         <a class="navbar-branch" id="logo" href="#">
+=======
+        <a class="navbar-branch" id="logo" href="/viewservlet">
+>>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
@@ -49,9 +53,13 @@
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
+<<<<<<< HEAD
                                 <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
                                                                                               width="20"
                                                                                               height="20"></button>
+=======
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
+>>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
                             </span>
                         </div>
                         <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
@@ -98,6 +106,8 @@
                     <%
                     } else {
                     %>
+                </li>
+                <li>
                     <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
                         <%
                             if (typeAccount.equals("admin")) {
@@ -111,6 +121,8 @@
                             }
                         %>
                     </p>
+                </li>
+                <li>
                     <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
                     <%
                         }

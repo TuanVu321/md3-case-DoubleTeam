@@ -2,6 +2,7 @@ package com.codegym.controller;
 
 import com.codegym.model.Review;
 import com.codegym.service.ReviewDetails;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,25 +22,13 @@ public class SearchServlet extends HttpServlet {
          findByName(request,response);
     }
 
-    private void listByPage(HttpServletRequest request, HttpServletResponse response) {
-        int start =0;
-        int end = 0;
-        List<Review> ListReview = reviewDetails.selectByDay();
-        int total = ListReview.size();
-        if(total<=10){
-            end=10;
-        }else {
-            end=total;
-        }
-        List<Review> ListPage = reviewDetails.getListByPage(ListReview,start,end);
 
-    }
 
     private void findByName(HttpServletRequest request, HttpServletResponse response) {
         String name = ""+ request.getParameter("inputName");
         List<Review> listReview = reviewDetails.selectByName(name);
-        request.setAttribute("listReview",listReview);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/search.jsp");
+        request.setAttribute("reviewList",listReview);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/search-name.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -50,7 +39,7 @@ public class SearchServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        findByDate(request,response);
+        listByPage(request,response);
 
 
     }
@@ -66,5 +55,35 @@ public class SearchServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void listByPage(HttpServletRequest request, HttpServletResponse response) {
+        String spageid= request.getParameter("pageid");
+        if(spageid==null){
+            spageid="1";
+        }
+        int pageid= Integer.parseInt(spageid);
+        int total = 10;
+        int start;
+        int stop;
+        if(pageid==1){
+            start =0;
+            stop = 10;
+
+        }else{
+            start = (pageid - 1)*total;
+            stop = start+total ;
+        }
+
+
+        List<Review> reviewList = reviewDetails.createReviewListPagnigation(start, stop);
+        request.setAttribute("reviewList", reviewList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/search.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (IOException | ServletException ex) {
+            ex.printStackTrace();
+        }
+
+
     }
 }

@@ -20,20 +20,19 @@ public class AuthorizationFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURI();
-        if (url.startsWith("/admin")) {
-            SignupAccount model = (SignupAccount) SessionUtil.getInstance().getValue(request, "USERMODEL");
-            if (model != null) {
-                if (model.getUsername().equals(SystemConstant.ADMIN)) {
-                    filterChain.doFilter(servletRequest, servletResponse);
-                } else if (model.getUsername().equals(SystemConstant.USER)) {
-                    response.sendRedirect(request.getContextPath()+"/login?action=signin&message=not_permission&alert=danger");
-                }
-            } else {
-                response.sendRedirect(request.getContextPath()+"/login?action=signin&message=not_login&alert=danger");
-            }
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
-        }
+//        if (url.startsWith("/admin")) {
+//            if () {
+//                if () {
+//                    filterChain.doFilter(servletRequest, servletResponse);
+//                } else if ()) {
+//                    response.sendRedirect(request.getContextPath()+"/login?action=signin&message=not_permission&alert=danger");
+//                }
+//            } else {
+//                response.sendRedirect(request.getContextPath()+"/login?action=signin&message=not_login&alert=danger");
+//            }
+//        } else {
+//            filterChain.doFilter(servletRequest, servletResponse);
+//        }
     }
 
     @Override

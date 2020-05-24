@@ -2,5 +2,6 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/src/consolog/console.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/consolog/finaldata2205.sql" dialect="MariaDB" />
   </component>
 </project>

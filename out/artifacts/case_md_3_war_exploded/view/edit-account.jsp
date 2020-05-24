@@ -45,24 +45,28 @@
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Trang chủ
+                       href="/viewservlet">Trang Chủ
                         <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Review</a>
+                       href="/search" methods="get">Review</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Hot tour</a>
+                       href="https://tago.vn/">Combo Siêu Rẻ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Vé máy bay</a>
+                       href="https://www.vntrip.vn/ve-may-bay">Vé Máy Bay</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Khách sạn</a>
+                       href="https://www.booking.com/">Khách Sạn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="https://dichungtaxi.com/">Di Chuyển</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

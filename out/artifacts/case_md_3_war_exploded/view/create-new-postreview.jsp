@@ -45,24 +45,24 @@
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Trang chủ
+                       href="/viewservlet">Trang chủ
                         <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Review</a>
+                       href="/search">Review</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Hot tour</a>
+                       href="https://tago.vn/">Hot tour</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Vé máy bay</a>
+                       href="https://www.vntrip.vn/ve-may-bay">Vé máy bay</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
-                       href="#">Khách sạn</a>
+                       href="https://www.booking.com/">Khách sạn</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -90,14 +90,12 @@
     <div id="create-new" class="formConfirm dashboard">
         <h1>Tạo Bài Post Review mới</h1>
         <button>
-            <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=1">PostReview
+            <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
             Dashboard</a>
         </button>
         <form method="post">
             <label>id_Destination:</label>
             <input type="text" name="destination"/><br/>
-            <label>id_Account:</label>
-            <input type="text" name="id_account"/><br/>
             <label>Name Review:</label>
             <input type="text" name="nameReview"/><br/>
             <label>Title Posts:</label>
@@ -108,8 +106,6 @@
             <textarea name="content" rows="5" cols="40"></textarea><br/>
             <label>Point values:</label>
             <input type="text" name="point"/><br/>
-            <label>Date Posts:</label>
-            <input type="date" name="dateposts"/>
             <input type="submit" value="Tạo PostReview"/>
         </form>
     </div>

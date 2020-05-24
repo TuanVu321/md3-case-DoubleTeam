@@ -8,8 +8,20 @@ public class SignupAccount {
     private String email;
     private String address;
     private String phonenumber;
+    private int actived;
 
     public SignupAccount(){}
+
+    public SignupAccount(int id_role, String username, String password, String fullname, String phone, String email, String address, int actived) {
+        this.id_role = id_role;
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.email = email;
+        this.address = address;
+        this.phonenumber = phone;
+        this.actived = actived;
+    }
 
     public SignupAccount(String username, String password, String fullname, String email, String address, String phonenumber) {
         this.username = username;
@@ -18,6 +30,14 @@ public class SignupAccount {
         this.email = email;
         this.address = address;
         this.phonenumber = phonenumber;
+    }
+
+    public int isActived() {
+        return actived;
+    }
+
+    public void setActived(int actived) {
+        this.actived = actived;
     }
 
     public SignupAccount(int id_role, String username, String password, String fullname, String phone, String email, String address) {
@@ -29,6 +49,7 @@ public class SignupAccount {
         this.address = address;
         this.phonenumber = phone;
     }
+
     public int getId_role(){
         return id_role;
     }

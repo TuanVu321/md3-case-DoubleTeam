@@ -83,7 +83,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                <li class="nav-item">
                     <%
                         if (fullname == null) {
                     %>
@@ -108,7 +107,6 @@
                     <%
                         }
                     %>
-                </li>
                 </li>
             </ul>
         </div>

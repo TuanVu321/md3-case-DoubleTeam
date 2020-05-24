@@ -16,6 +16,7 @@
     session = request.getSession();
     String fullname = (String)session.getAttribute("fullname");
     String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+    int count = 1;
 %>
 <div class="container">
     <div id="contain-dashboard" class="formConfirm dashboard">
@@ -36,7 +37,7 @@
                 </tr>
                 <c:forEach items="${accountList}" var="account">
                     <tr>
-                        <td></td>
+                        <td><%=count++%></td>
                         <td>${account.getFullname()}</td>
                         <td>${account.getUsername()}</td>
                         <td>${account.getPassword()}</td>
@@ -45,12 +46,12 @@
                         <td>${account.getAddress()}</td>
                         <td>${account.getId_role()}</td>
                         <td>
-                            <button><a href="/admin_dashboard?action=edit&usernameAcc=${account.getUsername()}">Edit</a>
+                            <button><a href="/admin_dashboard?action=actived&usernameAcc=${account.getUsername()}">Actived</a>
                             </button>
                         </td>
                         <td>
                             <button><a
-                                    href="/admin_dashboard?action=delete&usernameAcc=${account.getUsername()}">Delete</a>
+                                    href="/admin_dashboard?action=blocked&usernameAcc=${account.getUsername()}">Blocked</a>
                             </button>
                         </td>
                     </tr>

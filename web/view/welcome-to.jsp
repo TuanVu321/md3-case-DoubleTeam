@@ -76,7 +76,6 @@
         <div id="successLoggIn">
             <h1 class="success">Chào Mừng <span id="nameLogIn">${fullnameUser}</span> !!!</h1>
             <p class="success">Bạn đã đăng nhập thành công, click vào đường link dưới đây để quay về trang chủ</p>
-            <%--<a href="/index.jsp?action=index&account=${fullnameUser}&typeAccount=${typeAccount}">Quay Về Trang Chủ</a>--%>
             <form method="get" action="/viewservlet">
                 <input type="submit" value="Quay Ve Trang Chu"/>
             </form>

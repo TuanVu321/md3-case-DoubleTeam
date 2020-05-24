@@ -28,7 +28,6 @@
     session = request.getSession();
     String fullname = (String)session.getAttribute("fullname");
     String typeAccount = (String)session.getAttribute("typeAccountLogIn");
-    int count = 1;
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
@@ -122,10 +121,10 @@
         <button><a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview Dashboard</a></button>
         <div id="contain-switch">
             <h2>Quản Lý Tài Khoản Thành Viên</h2>
-            <form method="post" action="/admin_dashboard?action=search">
-                <label>Nhập Username để tìm kiếm:</label>
+            <form method="get">
+                <label>Nhập Họ Tên để tìm kiếm:</label>
                 <input type="text" id="search" name="usernameSearch"/>
-                <button type="submit">Search</button>
+                <input type="submit" value="search"/>
             </form>
             <table>
                 <tr>
@@ -139,9 +138,9 @@
                     <th id="account">Kiểu Tài Khoản</th>
                     <th id="update">Trạng Thái</th>
                 </tr>
-                <c:forEach items="${accountList}" var="account">
+                <c:forEach items="${listAccount}" var="account">
                     <tr>
-                        <td><%=count++%></td>
+                        <td></td>
                         <td>${account.getFullname()}</td>
                         <td>${account.getUsername()}</td>
                         <td>${account.getPassword()}</td>
@@ -162,12 +161,10 @@
                             </c:otherwise>
                         </c:choose>
                         <td>
-                            <form action="post">
-                                <a href="/admin_dashboard?action=actived&usernameAcc=${account.getUsername()}">Actived</a>
-                            </form>
+                            <button><a href="/admin_dashboard?action=actived&usernameAcc=${account.getUsername()}">Actived</a></button>
                         </td>
                         <td>
-                                <a href="/admin_dashboard?action=blocked&usernameAcc=${account.getUsername()}">Blocked</a>
+                            <button><a href="/admin_dashboard?action=blocked&usernameAcc=${account.getUsername()}">Blocked</a></button>
                         </td>
                     </tr>
                 </c:forEach>

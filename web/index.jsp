@@ -79,13 +79,13 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
-                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
-                    <a href="#" style="color: white; font-size: 19px">
-                    </a>
-                </li>
-=======
->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
+<%--<<<<<<< HEAD--%>
+<%--                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">--%>
+<%--                    <a href="#" style="color: white; font-size: 19px">--%>
+<%--                    </a>--%>
+<%--                </li>--%>
+<%--=======--%>
+<%-->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b--%>
                 <li class="nav-item">
                     <%
                         if (fullname == null) {

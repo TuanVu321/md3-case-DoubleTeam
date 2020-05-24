@@ -17,15 +17,8 @@ import javax.mail.internet.MimeMessage;
 public class DatabaseServiceImpl implements DatabaseService {
     private static final String jdbcURL = "jdbc:mysql://localhost:3306/c0220h1dbt";
     private String userDB = "root";
-////<<<<<<< HEAD
-//    private String passDB = "123456";
-////=======
-////<<<<<<< HEAD
-////    private String passDB = "11100001";
-////=======
-    private String passDB = "12345678";
-//>>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
-//>>>>>>> 4a33dbd68b3065dc6ad94360b3d2e322b53a8aa5
+    private String passDB = "123456";
+
     private static Connection conn;
 
     private static final String UPDATE_STATUS = "update c0220h1dbt.account set active = 1 where email = ?;";

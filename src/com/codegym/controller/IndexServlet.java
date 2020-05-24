@@ -17,14 +17,14 @@ import java.util.List;
 @WebServlet(name = "IndexServlet", urlPatterns = "/viewservlet")
 public class IndexServlet extends HttpServlet {
     private IndexService indexService;
-    public void init(){
+
+    public void init() {
         indexService = new IndexService();
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
-
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         hotReview1(request, response);

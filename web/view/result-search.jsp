@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.codegym.model.SignupAccount" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: harrynguyen
   Date: 17/05/2020
@@ -7,9 +8,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.*" %>
-<%@ page import="com.codegym.model.Review" %>
-<%@ page import="com.codegym.service.ReviewServletImpl" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -24,24 +22,16 @@
     <link rel="stylesheet" href="../css/confirm-email.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/dashboard-admin.css">
-    <link rel="stylesheet" href="../css/post-review.css">
 </head>
 <body>
 <%
     session = request.getSession();
     String fullname = (String)session.getAttribute("fullname");
     String typeAccount = (String)session.getAttribute("typeAccountLogIn");
-    int pageNo = Integer.parseInt(request.getParameter("pageNo"));
-    int count = 1;
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
-<%--<<<<<<< HEAD--%>
-<%--        <a class="navbar-branch" id="logo" href="#">--%>
-<%--=======--%>
-        <a class="navbar-branch" id="logo" href="/viewservlet">
-<%-->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b--%>
+        <a class="navbar-branch" id="logo" href="#">
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
@@ -53,13 +43,9 @@
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
-<%--<<<<<<< HEAD--%>
-<%--                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"--%>
-<%--                                                                                              width="20"--%>
-<%--                                                                                              height="20"></button>--%>
-<%--=======--%>
-                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
-<%-->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b--%>
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
+                                                                                              width="20"
+                                                                                              height="20"></button>
                             </span>
                         </div>
                         <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
@@ -106,8 +92,6 @@
                     <%
                     } else {
                     %>
-                </li>
-                <li>
                     <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
                         <%
                             if (typeAccount.equals("admin")) {
@@ -121,8 +105,6 @@
                             }
                         %>
                     </p>
-                </li>
-                <li>
                     <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
                     <%
                         }
@@ -132,54 +114,63 @@
         </div>
     </div>
 </nav>
-<div id="contain-dashboard-review" class="formConfirm dashboard">
-    <h1>Dashboard Admin</h1>
-    <button><a href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>">Account
-        Dashboard</a></button>
-    <button><a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
-        Dashboard</a></button>
-    <br/>
-    <h2>Quản Lý Bài Viết Review</h2>
-    <a href="/admin_dashboard?action=showNewReviewForm&account=<%=fullname%>&role=<%=session.getAttribute("typeAccountLogIn")%>">Tạo
-        Bài Viết Mới</a>
-    <form method="post" action="/admin_dashboard?action=searchReview">
-        <label>Nhập Tên Địa Điểm Để Tìm Kiếm Bài Viết Review:</label><input type="text" name="searchName"/><br/>
-        <input type="submit" value="Tìm Kiếm"/>
-    </form>
-    <table>
-        <thead>
-        <tr>
-            <th id="stt">STT</th>
-            <th id="tbv">Tên Bài Viết</th>
-            <th id="td">Tiêu Đề Bài Viết</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${reviewList}" var="review">
-            <tr>
-                <td><%=count++%></td>
-                <td>${review.getName()}</td>
-                <td id="titleReview">${review.getTitle()}</td>
-                <td>
-                    <button>
-                        <a href="/admin_dashboard?action=editPostReview&id_review=${review.getId_review()}">Edit</a>
-                    </button>
-                </td>
-                <td>
-                    <button><a
-                            href="/admin_dashboard?action=deleteReview&id_review=${review.getId_review()}&pageNo=<%=pageNo%>">Delete</a>
-                    </button>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">1</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=2">2</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=3">3</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=4">4</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=5">5</a>
-    <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=6">6</a>
+<div class="container">
+    <div id="contain-dashboard" class="formConfirm dashboard">
+        <h1>Dashboard Admin</h1>
+        <button><a href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>">Account Dashboard</a></button>
+        <button><a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview Dashboard</a></button>
+        <div id="contain-switch">
+            <h2>Quản Lý Tài Khoản Thành Viên</h2>
+            <form method="get">
+                <label>Nhập Họ Tên để tìm kiếm:</label>
+                <input type="text" id="search" name="usernameSearch"/>
+                <input type="submit" value="search"/>
+            </form>
+            <table>
+                <tr>
+                    <th id="stt">STT</th>
+                    <th id="ht">Họ Tên</th>
+                    <th id="us">Username</th>
+                    <th id="pass">Password</th>
+                    <th id="phone">Số Điện Thoại</th>
+                    <th id="email">Email</th>
+                    <th id="address">Địa Chỉ</th>
+                    <th id="account">Kiểu Tài Khoản</th>
+                    <th id="update">Trạng Thái</th>
+                </tr>
+                <c:forEach items="${listAccount}" var="account">
+                    <tr>
+                        <td></td>
+                        <td>${account.getFullname()}</td>
+                        <td>${account.getUsername()}</td>
+                        <td>${account.getPassword()}</td>
+                        <td>${account.getPhonenumber()}</td>
+                        <td>${account.getEmail()}</td>
+                        <td>${account.getAddress()}</td>
+                        <td>${account.getId_role()}</td>
+                        <c:choose>
+                            <c:when test="${account.isActived() == 1}">
+                                <td>
+                                    "Tài Khoản đang kích hoạt"
+                                </td>
+                            </c:when>
+                            <c:otherwise>
+                                <td>
+                                    "Tài Khoản đã bị khóa"
+                                </td>
+                            </c:otherwise>
+                        </c:choose>
+                        <td>
+                            <button><a href="/admin_dashboard?action=actived&usernameAcc=${account.getUsername()}">Actived</a></button>
+                        </td>
+                        <td>
+                            <button><a href="/admin_dashboard?action=blocked&usernameAcc=${account.getUsername()}">Blocked</a></button>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+    </div>
 </div>
 <div class="container-fluid" style="background: black; height: 500px; margin-top: 20px">
     <div style=" width: 700px; height: 450px; margin: 25px auto; text-align: center">
@@ -191,6 +182,3 @@
 <script type="text/javascript" src="../js/toggle-dashboard.js"></script>
 </body>
 </html>
-
-
-

@@ -98,3 +98,18 @@ body {
 .hot-review-tour {
     height: auto;
 }
+
+/*#block-ellipsis {*/
+/*    width: 320px;*/
+/*    height: 96px;*/
+/*    display: block;*/
+/*    display: -webkit-box;*/
+/*    max-width: 100%;*/
+/*    margin: 0 auto;*/
+/*    font-size: 14px;*/
+/*    line-height: 1;*/
+/*    -webkit-line-clamp: 3;*/
+/*    -webkit-box-orient: vertical;*/
+/*    overflow: hidden;*/
+/*    text-overflow: ellipsis;*/
+/*}*/

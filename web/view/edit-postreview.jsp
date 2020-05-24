@@ -30,7 +30,11 @@
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
+
+        <%--<a class="navbar-branch" id="logo" href="#">--%>
+
         <a class="navbar-branch" id="logo" href="/viewservlet">
+
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
@@ -42,6 +46,9 @@
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
+                                                                                              width="20"
+                                                                                              height="20"></button>
                                 <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
                             </span>
                         </div>
@@ -77,6 +84,10 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
+                    <a href="#" style="color: white; font-size: 19px">
+                    </a>
+                </li>
                 <li class="nav-item">
                     <%
                         if (fullname == null) {
@@ -115,14 +126,12 @@
     <div id="create-new" class="formConfirm dashboard">
         <h1>Chỉnh Sửa Post Review</h1>
         <button>
-            <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&page=1">PostReview
+            <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
                 Dashboard</a>
         </button>
         <form method="post">
             <label>id_Destination:</label>
             <input type="text" name="destination" value="${oldReview.getId_destination()}"/><br/>
-            <label>id_Account:</label>
-            <input type="text" name="id_account" value="${oldReview.getId_account()}"/><br/>
             <label>Name Rieview:</label>
             <input type="text" name="nameReview" value="${oldReview.getName()}"/><br/>
             <label>Title Posts:</label>
@@ -134,7 +143,6 @@
             <label>Point values:</label>
             <input type="text" name="point" value="${oldReview.getStar()}"/><br/>
             <label>Date Posts:</label>
-            <input type="date" name="dateposts" value="${oldReview.getDatePost()}"/>
             <input type="submit" value="Cập Nhật"/>
         </form>
     </div>

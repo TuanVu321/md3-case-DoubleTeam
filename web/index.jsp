@@ -157,11 +157,10 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(0).getDestinations()}</h6>
-                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
-                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                    <p id="content1" class="text-justify">
                         ${getTop6.get(0).getTitle()}
-                        <a href="/review?id=${getTop6.get(0).getId_review()}">Xem thêm</a></p>
+                    </p>
+                    <a id="link1" href="/review?id=${getTop6.get(0).getId_review()}">Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px">
@@ -177,11 +176,14 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(3).getDestinations()}</h6>
-                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
-                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                    <p id="content4" class="text-justify">
                         ${getTop6.get(3).getTitle()}
+<<<<<<< HEAD
                         <a href="/review?id=${getTop6.get(3).getId_review()}">Xem thêm</a></p>
+=======
+                    </p>
+                    <a id="link4" href="/review?id=${getTop6.get(3).getId_review()}">Xem thêm</a>
+>>>>>>> 066b7e780c6ebec20b4eef15c17920f8b229a236
                 </div>
             </div>
         </div>
@@ -199,11 +201,10 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(1).getDestinations()}</h6>
-                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
-                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                    <p id="content2" class="text-justify">
                         ${getTop6.get(1).getTitle()}
-                        <a href="/review?id=${getTop6.get(1).getId_review()}">Xem thêm</a></p>
+                    </p>
+                                        <a id="link2" href="/review?id=${getTop6.get(1).getId_review()}">Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px">
@@ -219,11 +220,10 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(4).getDestinations()}</h6>
-                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
-                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                    <p id="content5" class="text-justify" >
                         ${getTop6.get(4).getTitle()}
-                        <a href="/review?id=${getTop6.get(4).getId_review()}">Xem thêm</a></p>
+                    </p>
+                                        <a id="link5" href="/review?id=${getTop6.get(4).getId_review()}">Xem thêm</a>
                 </div>
             </div>
         </div>
@@ -241,11 +241,10 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(2).getDestinations()}</h6>
-                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
-                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                    <p id="content3" class="text-justify">
                         ${getTop6.get(2).getTitle()}
-                        <a href="/review?id=${getTop6.get(2).getId_review()}">Xem thêm</a></p>
+                    </p>
+                                        <a id="link3" href="/review?id=${getTop6.get(2).getId_review()}">Xem thêm</a>
                 </div>
             </div>
             <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px">
@@ -261,11 +260,10 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(5).getDestinations()}</h6>
-                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
-                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                    <p id="content6" class="text-justify" style="margin: 0px 0px">
                         ${getTop6.get(5).getTitle()}
-                        <a href="/review?id=${getTop6.get(5).getId_review()}">Xem thêm</a></p>
+                    </p>
+                    <a id="link6" href="/review?id=${getTop6.get(5).getId_review()}">...Xem thêm</a>
                 </div>
             </div>
         </div>
@@ -388,6 +386,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="js/text-length.js"></script>
 <script type="text/javascript" src="..js/utilities.js"></script>
 <script type="text/javascript" src="..js/validate-form.js"></script>
 <script type="text/javascript" src="..js/validate-register.js"></script>

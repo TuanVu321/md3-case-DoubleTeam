@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Tạo Post Review Mới</title>
+    <title>Chỉnh Sửa Post Review</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/bootstrap-grid.css">
     <link rel="stylesheet" href="../css/bootstrap-reboot.css">
@@ -25,8 +25,8 @@
 <body>
 <%
     session = request.getSession();
-    String fullname = (String)session.getAttribute("fullname");
-    String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+    String fullname = (String) session.getAttribute("fullname");
+    String typeAccount = (String) session.getAttribute("typeAccountLogIn");
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
@@ -41,7 +41,7 @@
             <samp class="navbar-toggler-icon"></samp>
         </button>
         <div class="collapse navbar-collapse  " id="navbarResponsive">
-            <div style="width: 350px; height: 40px; margin-right: 20px">
+            <div style="width: 300px; height: 40px; margin-right: 20px">
                 <form method="post" action="/search">
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
@@ -49,10 +49,13 @@
                                 <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
                                                                                               width="20"
                                                                                               height="20"></button>
-                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
+                                                                                              width="20"
+                                                                                              height="20"></button>
                             </span>
                         </div>
-                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
+                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..."
+                               type="text">
                     </div>
                 </form>
             </div>
@@ -102,11 +105,16 @@
                         <%
                             if (typeAccount.equals("admin")) {
                         %>
-                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <a id="role"
+                           href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>"
+                           style="color: red; font-size: 17px"><%=typeAccount%>
+                        </a>
                         <%
                         } else {
                         %>
-                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>"
+                           style="color: red; font-size: 17px"><%=typeAccount%>
+                        </a>
                         <%
                             }
                         %>
@@ -122,29 +130,49 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <div id="create-new" class="formConfirm dashboard">
-        <h1>Chỉnh Sửa Post Review</h1>
+<div class="container-fluid">
+    <div style="width: auto; height: auto; text-align: center; background: white; margin-top: 30px">
+        <h1 style="padding-top: 30px">Chỉnh Sửa Post Review</h1>
         <button>
             <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
                 Dashboard</a>
         </button>
-        <form method="post">
-            <label>id_Destination:</label>
-            <input type="text" name="destination" value="${oldReview.getId_destination()}"/><br/>
-            <label>Name Rieview:</label>
-            <input type="text" name="nameReview" value="${oldReview.getName()}"/><br/>
-            <label>Title Posts:</label>
-            <textarea name="title" rows="5" cols="40">${oldReview.getTitle()}</textarea><br/>
-            <label>Picture:</label>
-            <input type="text" name="picture" value="${oldReview.getPicture()}"/><br/>
-            <label>Content:</label>
-            <textarea name="content" rows="5" cols="40">${oldReview.getContent()}</textarea><br/>
-            <label>Point values:</label>
-            <input type="text" name="point" value="${oldReview.getStar()}"/><br/>
-            <label>Date Posts:</label>
-            <input type="submit" value="Cập Nhật"/>
-        </form>
+        <div style=" width: 485px; height: 340px; padding: 30px 30px; margin: 10px auto">
+            <form method="post">
+                <table>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>id_Destination:</label></td>
+                        <td>
+                            <input type="text" name="destination" value="${oldReview.getId_destination()}"/>
+                        </td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Name Review:</label></td>
+                        <td><input type="text" name="nameReview" value="${oldReview.getName()}"/></td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Title Posts:</label></td>
+                        <td><textarea name="title" rows="5" cols="40">${oldReview.getTitle()}</textarea></td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Picture:</label></td>
+                        <td><input type="text" name="picture" value="${oldReview.getPicture()}"/></td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Content:</label></td>
+                        <td><textarea name="content" rows="5" cols="40">${oldReview.getContent()}</textarea></td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Point values:</label></td>
+                        <td><input type="text" name="point" value="${oldReview.getStar()}"/></td>
+                    </tr>
+                    <tr style="text-align: center; padding-top: 20px">
+                        <td colspan="2"><input type="submit" value="Cập Nhật"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div style="height: 3px; padding-bottom: 30px"></div>
     </div>
 </div>
 <div class="container-fluid" style="background: black; height: 500px; margin-top: 20px">

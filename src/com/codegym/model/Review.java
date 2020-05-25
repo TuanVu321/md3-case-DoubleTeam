@@ -2,7 +2,7 @@ package com.codegym.model;
 
 import java.util.Date;
 
-public class Review {
+public class    Review {
     int id_review;
     int id_destination;
     int id_account;

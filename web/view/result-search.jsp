@@ -38,7 +38,7 @@
             <samp class="navbar-toggler-icon"></samp>
         </button>
         <div class="collapse navbar-collapse  " id="navbarResponsive">
-            <div style="width: 350px; height: 40px; margin-right: 20px">
+            <div style="width: 300px; height: 40px; margin-right: 20px">
                 <form method="post" action="/search">
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
@@ -114,40 +114,45 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <div id="contain-dashboard" class="formConfirm dashboard">
-        <h1>Dashboard Admin</h1>
-        <button><a href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>">Account Dashboard</a></button>
-        <button><a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview Dashboard</a></button>
-        <div id="contain-switch">
+<div class="container-fluid">
+    <div style="width: auto; height: auto; text-align: center; background: white; margin-top: 30px">
+        <h1 style="padding-top: 30px">Dashboard Admin</h1>
+        <button><a style="color: black" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>">Account Dashboard</a></button>
+        <button><a style="color: black" href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview Dashboard</a></button>
+        <div style="padding: 30px 30px">
             <h2>Quản Lý Tài Khoản Thành Viên</h2>
             <form method="get">
                 <label>Nhập Họ Tên để tìm kiếm:</label>
                 <input type="text" id="search" name="usernameSearch"/>
                 <input type="submit" value="search"/>
             </form>
-            <table>
-                <tr>
-                    <th id="stt">STT</th>
-                    <th id="ht">Họ Tên</th>
-                    <th id="us">Username</th>
-                    <th id="pass">Password</th>
-                    <th id="phone">Số Điện Thoại</th>
-                    <th id="email">Email</th>
-                    <th id="address">Địa Chỉ</th>
-                    <th id="account">Kiểu Tài Khoản</th>
-                    <th id="update">Trạng Thái</th>
+            <table class="table table-hover">
+                <thead class="thead-light">
+                <tr style="text-align: center">
+                    <th scope="col" id="stt">STT</th>
+                    <th scope="col" id="ht">Họ Tên</th>
+                    <th scope="col" id="us">Username</th>
+                    <th scope="col" id="pass">Password</th>
+                    <th scope="col" id="phone">Số Điện Thoại</th>
+                    <th scope="col" id="email">Email</th>
+                    <th scope="col" id="address">Địa Chỉ</th>
+                    <th scope="col" id="account">Kiểu Tài Khoản</th>
+                    <th scope="col" id="update">Trạng Thái</th>
+                    <th></th>
+                    <th></th>
                 </tr>
+                </thead>
+                <tbody>
                 <c:forEach items="${listAccount}" var="account">
                     <tr>
                         <td></td>
-                        <td>${account.getFullname()}</td>
+                        <td style="text-align: center">${account.getFullname()}</td>
                         <td>${account.getUsername()}</td>
-                        <td>${account.getPassword()}</td>
-                        <td>${account.getPhonenumber()}</td>
+                        <td style="text-align: center">${account.getPassword()}</td>
+                        <td style="text-align: center">${account.getPhonenumber()}</td>
                         <td>${account.getEmail()}</td>
                         <td>${account.getAddress()}</td>
-                        <td>${account.getId_role()}</td>
+                        <td style="text-align: center">${account.getId_role()}</td>
                         <c:choose>
                             <c:when test="${account.isActived() == 1}">
                                 <td>
@@ -164,7 +169,7 @@
                             <button><a href="/admin_dashboard?action=actived&usernameAcc=${account.getUsername()}">Actived</a></button>
                         </td>
                         <td>
-                            <button><a href="/admin_dashboard?action=blocked&usernameAcc=${account.getUsername()}">Blocked</a></button>
+                            <button><a style="color: red" href="/admin_dashboard?action=blocked&usernameAcc=${account.getUsername()}">Blocked</a></button>
                         </td>
                     </tr>
                 </c:forEach>

@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 #contain-dashboard {
     width: 1300px;
     height: 500px;
     margin-left: -90px;
 }
+=======
+/*#contain-dashboard {*/
+/*    width: 1300px;*/
+/*    height: 500px;*/
+/*    margin-left: -90px;*/
+/*}*/
+>>>>>>> 066b7e780c6ebec20b4eef15c17920f8b229a236
 
-#contain-switch table tr th, td {
-    border: 1px solid red;
-    width: 150px;
-    height: 20px;
-}
+/*#contain-switch table tr th, td {*/
+/*    border: 1px solid red;*/
+/*    width: 150px;*/
+/*    height: 20px;*/
+/*}*/

@@ -141,7 +141,7 @@
 
         <div >
             <form method="get" >
-                <table class="table table-striped">
+                <table class="table table-striped table-hover">
                     <thead>
                     <tr style="font-size: 23px; text-align: center">
                         <th scope="col">Tên bài viết</th>
@@ -164,7 +164,7 @@
                 <div style="width: 200px; height: 70px; margin: 0px auto; padding-bottom: 40px; text-align: center">
                    <table class="table table-bordered">
                        <tr >
-                           <td style="">
+                           <td>
                                <a style=" font-size: 20px; color: black" href="/search?pageid=1">1</a></td>
                            <td >
                                <a style=" font-size: 20px; color: black" href="/search?pageid=2">2</a></td>

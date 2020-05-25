@@ -2,7 +2,7 @@ package com.codegym.model;
 
 import java.util.Date;
 
-public class Review {
+public class    Review {
     int id_review;
     int id_destination;
     int id_account;
@@ -12,6 +12,7 @@ public class Review {
     String content;
     Date datePost;
     int star;
+    float scoreStar;
     String picture;
 
     public Review(int id_account) {
@@ -27,7 +28,7 @@ public class Review {
         this.picture = picture;
     }
 
-    public Review(int id_destination, int id_account, String name, String title, String content, String picture, int point) {
+    public Review(int id_destination, int id_account, String name, String title, String picture, String content, int point) {
         this.id_destination = id_destination;
         this.id_account = id_account;
         this.name = name;
@@ -56,6 +57,13 @@ public class Review {
         this.datePost = datePost;
         this.star = star;
         this.picture = picture;
+    }
+
+    public Review(int id_review, String name_review, String titleposts, float pointevaluate) {
+        this.id_review = id_review;
+        this.name = name_review;
+        this.title = titleposts;
+        this.scoreStar = pointevaluate;
     }
 
     public int getId_destination() {
@@ -120,6 +128,14 @@ public class Review {
 
     public void setStar(int star) {
         this.star = star;
+    }
+
+    public float getScoreStar() {
+        return this.scoreStar;
+    }
+
+    public void setScoreStar(float score) {
+        this.scoreStar = score;
     }
 
     public String getPicture() {

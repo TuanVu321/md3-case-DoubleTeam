@@ -24,14 +24,13 @@
     <link rel="stylesheet" href="../css/confirm-email.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/dashboard-admin.css">
     <link rel="stylesheet" href="../css/post-review.css">
 </head>
 <body>
 <%
     session = request.getSession();
-    String fullname = (String)session.getAttribute("fullname");
-    String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+    String fullname = (String) session.getAttribute("fullname");
+    String typeAccount = (String) session.getAttribute("typeAccountLogIn");
     int count = 1;
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
@@ -43,7 +42,7 @@
             <samp class="navbar-toggler-icon"></samp>
         </button>
         <div class="collapse navbar-collapse  " id="navbarResponsive">
-            <div style="width: 350px; height: 40px; margin-right: 20px">
+            <div style="width: 300px; height: 40px; margin-right: 20px">
                 <form method="post" action="/search">
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
@@ -53,7 +52,8 @@
                                                                                               height="20"></button>
                             </span>
                         </div>
-                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
+                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..."
+                               type="text">
                     </div>
                 </form>
             </div>
@@ -101,11 +101,16 @@
                         <%
                             if (typeAccount.equals("admin")) {
                         %>
-                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <a id="role"
+                           href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>"
+                           style="color: red; font-size: 17px"><%=typeAccount%>
+                        </a>
                         <%
                         } else {
                         %>
-                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>"
+                           style="color: red; font-size: 17px"><%=typeAccount%>
+                        </a>
                         <%
                             }
                         %>
@@ -119,43 +124,41 @@
         </div>
     </div>
 </nav>
-<div id="contain-dashboard-review" class="formConfirm dashboard">
-    <h1>Dashboard Admin</h1>
-    <button><a href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>">Account
-        Dashboard</a></button>
-    <button><a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
-        Dashboard</a></button>
-    <br/>
-    <h2>Kết Quả Tìm Kiếm</h2>
-    <table>
-        <thead>
-        <tr>
-            <th id="stt">STT</th>
-            <th id="tbv">Tên Bài Viết</th>
-            <th id="td">Tiêu Đề Bài Viết</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${reviewList}" var="review">
-            <tr>
-                <td><%=count++%></td>
-                <td>${review.getName()}</td>
-                <td id="titleReview">${review.getTitle()}</td>
-                <%--<td>
-                    <button>
-                        <a href="/admin_dashboard?action=editPostReview&id_review=${review.getId_review()}">Edit</a>
-                    </button>
-                </td>
-                <td>
-                    <button><a
-                            href="/admin_dashboard?action=deleteReview&id_review=${review.getId_review()}&pageNo=<%=pageNo%>">Delete</a>
-                    </button>
-                </td>--%>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-   </div>
+<div class="container-fluid">
+    <div style="width: auto; height: auto; text-align: center; background: white; margin-top: 30px">
+        <h1 style="padding-top: 30px">Dashboard Admin</h1>
+        <button><a style="color: black"
+                   href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>">Account
+            Dashboard</a></button>
+        <button><a style="color: black"
+                   href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
+            Dashboard</a></button>
+        <div style="padding: 30px 30px">
+            <h2>Kết Quả Tìm Kiếm</h2>
+            <table class="table table-hover">
+                <thead class="thead-light">
+                <tr style="text-align: center">
+                    <th scope="col" id="stt">STT</th>
+                    <th scope="col" id="tbv">Tên Bài Viết</th>
+                    <th scope="col" id="td">Tiêu Đề Bài Viết</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${reviewList}" var="review">
+                    <tr>
+                        <td style="text-align: center"><%=count++%>
+                        </td>
+                        <td>${review.getName()}</td>
+                        <td id="titleReview">${review.getTitle()}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <div class="container-fluid" style="background: black; height: 500px; margin-top: 20px">
     <div style=" width: 700px; height: 450px; margin: 25px auto; text-align: center">
         <img src="../img/logoDBT.png" style="margin: 70px auto 30px auto">

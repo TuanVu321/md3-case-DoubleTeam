@@ -9,7 +9,6 @@ public class ConnectionJDBC {
     String jdbcUsername = "root";
     String jdbcPassword = "123456";
 
-
     protected Connection getConnection(){
         Connection connection = null;
         try {

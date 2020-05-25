@@ -25,8 +25,8 @@
 <body>
 <%
     session = request.getSession();
-    String fullname = (String)session.getAttribute("fullname");
-    String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+    String fullname = (String) session.getAttribute("fullname");
+    String typeAccount = (String) session.getAttribute("typeAccountLogIn");
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
@@ -37,46 +37,44 @@
             <samp class="navbar-toggler-icon"></samp>
         </button>
         <div class="collapse navbar-collapse  " id="navbarResponsive">
-            <div style="width: 350px; height: 40px; margin-right: 20px">
+            <div style="width: 300px; height: 40px; margin-right: 20px">
                 <form method="post" action="/search">
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
                             <span class="input-group-text search-btn">
-                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png" width="20" height="20"></button>
+                                <button type="submit" style="border: 0; background: 0px"><img src="/img/ic_search.png"
+                                                                                              width="20"
+                                                                                              height="20"></button>
                             </span>
                         </div>
-                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
+                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..."
+                               type="text">
                     </div>
                 </form>
             </div>
             <ul class="navbar-nav mr-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" style="color: white; font-size: 19px"
-<%--<<<<<<< HEAD--%>
-<%--                       href="/viewservlet">Trang chủ--%>
-<%--=======--%>
-<%--                       href="/viewservlet">Trang Chủ--%>
-<%-->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b--%>
-<%--                        <span class="sr-only">(current)</span></a>--%>
-<%--                </li>--%>
-<%--                <li class="nav-item">--%>
-<%--                    <a class="nav-link" style="color: white; font-size: 19px"--%>
-<%--<<<<<<< HEAD--%>
-<%--                       href="/search">Review</a>--%>
-<%--                </li>--%>
-<%--                <li class="nav-item">--%>
-<%--                    <a class="nav-link" style="color: white; font-size: 19px"--%>
-<%--                       href="https://tago.vn/">Hot tour</a>--%>
-<%--                </li>--%>
-<%--                <li class="nav-item">--%>
-<%--                    <a class="nav-link" style="color: white; font-size: 19px"--%>
-<%--                       href="https://www.vntrip.vn/ve-may-bay">Vé máy bay</a>--%>
-<%--                </li>--%>
-<%--                <li class="nav-item">--%>
-<%--                    <a class="nav-link" style="color: white; font-size: 19px"--%>
-<%--                       href="https://www.booking.com/">Khách sạn</a>--%>
-<%--=======--%>
-                       href="/search" methods="get">Review</a>
+                       href="/viewservlet">Trang chủ
+                        <%--href="/viewservlet">Trang Chủ--%>
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="/search">Review</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="https://tago.vn/">Hot tour</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="https://www.vntrip.vn/ve-may-bay">Vé máy bay</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-size: 19px"
+                       href="https://www.booking.com/">Khách sạn</a>
+                    <%--href="/search" methods="get">Review</a>--%>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
@@ -93,7 +91,6 @@
                 <li class="nav-item">
                     <a class="nav-link" style="color: white; font-size: 19px"
                        href="https://dichungtaxi.com/">Di Chuyển</a>
-<%-->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b--%>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -111,11 +108,16 @@
                         <%
                             if (typeAccount.equals("admin")) {
                         %>
-                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <a id="role"
+                           href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>"
+                           style="color: red; font-size: 17px"><%=typeAccount%>
+                        </a>
                         <%
                         } else {
                         %>
-                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>"
+                           style="color: red; font-size: 17px"><%=typeAccount%>
+                        </a>
                         <%
                             }
                         %>
@@ -131,28 +133,47 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <div id="create-new" class="formConfirm dashboard">
-        <h1>Tạo Bài Post Review mới</h1>
+<div class="container-fluid">
+    <div style="width: auto; height: auto; text-align: center; background: white; margin-top: 30px">
+        <h1 style="padding-top: 30px">Tạo Bài Post Review mới</h1>
         <button>
             <a href="/admin_dashboard?action=showReviewList&account=<%=fullname%>&role=<%=typeAccount%>&pageNo=1">PostReview
-            Dashboard</a>
+                Dashboard</a>
         </button>
-        <form method="post">
-            <label>id_Destination:</label>
-            <input type="text" name="destination"/><br/>
-            <label>Name Review:</label>
-            <input type="text" name="nameReview"/><br/>
-            <label>Title Posts:</label>
-            <textarea name="title" rows="5" cols="40"></textarea><br/>
-            <label>Picture:</label>
-            <input type="text" name="picture"/><br/>
-            <label>Content:</label>
-            <textarea name="content" rows="5" cols="40"></textarea><br/>
-            <label>Point values:</label>
-            <input type="text" name="point"/><br/>
-            <input type="submit" value="Tạo PostReview"/>
-        </form>
+        <div style=" width: 485px; height: 340px; padding: 30px 30px; margin: 10px auto">
+            <form method="post">
+                <table>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>id_Destination:</label></td>
+                        <td><input type="text" name="destination"/></td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Name Review:</label></td>
+                        <td><input type="text" name="nameReview"/></td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Title Posts:</label></td>
+                        <td><textarea name="title" rows="5" cols="40"></textarea></td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Picture:</label></td>
+                        <td><input type="text" name="picture"/></td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Content:</label></td>
+                        <td><textarea name="content" rows="5" cols="40"></textarea></td>
+                    </tr>
+                    <tr style="padding-top: 10px">
+                        <td style="text-align: right; padding-right: 10px"><label>Point values:</label></td>
+                        <td><input type="text" name="point"/></td>
+                    </tr>
+                    <tr style="text-align: center; padding-top: 20px">
+                        <td colspan="2"><input type="submit" value="Tạo PostReview"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div style="height: 3px; padding-bottom: 30px"></div>
     </div>
 </div>
 <div class="container-fluid" style="background: black; height: 500px; margin-top: 20px">

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/bootstrap-reboot.css">
     <link rel="stylesheet" href="../css/review.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/jquery.rateyo.min.css"/>
     <title>Chi tiết review</title>
 </head>
 <body>
@@ -137,7 +138,7 @@
             </div>
 
             <div style="margin-top: 20px">
-                <div style="float: left; margin-right: 10px; font-size: 20px">Điểm bài viết: </div>
+                <div style="float: left; margin-right: 10px; font-size: 20px">Tổng Điểm bài viết: </div>
                 <div style="float: left; margin-right: 10px; font-size: 20px"><p>${review.getStar()}</p></div>
                 <div style="float: left"><img src="../img/star.png" width="20px" height="20"></div>
 
@@ -146,15 +147,34 @@
             <div style=" margin-top: 20px"><img src="${review.getPicture()}" width="100%"></div>
             <div class="text-justify" style="width: 100%; font-size: 20px; margin-top: 20px">
                 ${review.getContent()}</div>
-            <div style="margin-top: 20px">
+            <div class="system-rating" style="margin-top: 20px">
                 <div style="float: left; margin-right: 10px; font-size: 20px">Đánh giá bài viết: </div>
-                <div style="float: left">
+                <!--<div style="float: left">
                     <img src="../img/star3.png" width="30" height="30">
                     <img src="../img/star3.png" width="30" height="30">
                     <img src="../img/star3.png" width="30" height="30">
                     <img src="../img/star3.png" width="30" height="30">
                     <img src="../img/star3.png" width="30" height="30">
-                </div>
+                </div>-->
+                <form method="post" action="/rating?action=rate">
+                    <table>
+                        <tr>
+                            <td>Chấm Điểm: </td>
+                            <td>
+                                <div id="rating"></div>
+                                <input type="hidden" name="hdrating" id="hdrating"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nhận Xét: </td>
+                            <td>
+                                <textarea name="message" rows="5" cols="20"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="hidden" name="reviewId" value="${review.getId_review()}"/>
+                    <input type="submit" value="Gửi đánh giá"/>
+                </form>
             </div>
             <div style="clear: both; margin-bottom: 20px"></div>
         </div>
@@ -184,6 +204,7 @@
 <script type="text/javascript" src="js/utilities.js"></script>
 <script type="text/javascript" src="js/validate-form.js"></script>
 <script type="text/javascript" src="js/validate-register.js"></script>
-
+<script type="text/javascript" src="../js/jquery.rateyo.min.js"></script>
+<script type="text/javascript" src="../js/system-rating.js"></script>
 </body>
 </html>

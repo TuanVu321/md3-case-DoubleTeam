@@ -79,13 +79,10 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
                 <li class="nav-item" style="margin-top: 9px; margin-right: 10px">
                     <a href="#" style="color: white; font-size: 19px">
                     </a>
                 </li>
-=======
->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
                 <li class="nav-item">
                     <%
                         if (fullname == null) {
@@ -184,7 +181,7 @@
                     max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
                     -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
                         ${getTop6.get(3).getTitle()}
-                        <a href="/review?id=${getTop6.get(3).getId_review()}}">Xem thêm</a></p>
+                        <a href="/review?id=${getTop6.get(3).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
         </div>

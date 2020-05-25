@@ -141,16 +141,6 @@
                 <td><%=count++%></td>
                 <td>${review.getName()}</td>
                 <td id="titleReview">${review.getTitle()}</td>
-                <%--<td>
-                    <button>
-                        <a href="/admin_dashboard?action=editPostReview&id_review=${review.getId_review()}">Edit</a>
-                    </button>
-                </td>
-                <td>
-                    <button><a
-                            href="/admin_dashboard?action=deleteReview&id_review=${review.getId_review()}&pageNo=<%=pageNo%>">Delete</a>
-                    </button>
-                </td>--%>
             </tr>
         </c:forEach>
         </tbody>

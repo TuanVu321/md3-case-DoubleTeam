@@ -32,11 +32,9 @@
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
-<<<<<<< HEAD
-        <a class="navbar-branch" id="logo" href="#">
-=======
+        <%--<a class="navbar-branch" id="logo" href="#">--%>
+
         <a class="navbar-branch" id="logo" href="/viewservlet">
->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">

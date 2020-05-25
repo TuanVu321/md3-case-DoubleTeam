@@ -17,11 +17,8 @@ import javax.mail.internet.MimeMessage;
 public class DatabaseServiceImpl implements DatabaseService {
     private static final String jdbcURL = "jdbc:mysql://localhost:3306/c0220h1dbt";
     private String userDB = "root";
-<<<<<<< HEAD
     private String passDB = "11100001";
-=======
-    private String passDB = "12345678";
->>>>>>> 3e91c4fcde65fbb64a5e37b563e1c067acc2572b
+    /*private String passDB = "12345678";*/
     private static Connection conn;
 
     private static final String UPDATE_STATUS = "update c0220h1dbt.account set active = 1 where email = ?;";
@@ -122,7 +119,7 @@ public class DatabaseServiceImpl implements DatabaseService {
                 message.setSubject("Email kích hoạt tài khoản Website du lịch");
                 message.setText("Để sử dụng hết chức năng Website hãy kích hoạt tài khoản vừa đăng kí ");
                 message.setText("Bằng cách click vào đường link dưới đây: " +
-                                       "http://localhost:9999/login?action=signin&userEmail=" + userEmail);
+                                       "http://localhost:8080/login?action=signin&userEmail=" + userEmail);
                 Transport.send(message);
             } catch (Exception ex){
                 System.out.println("Sending mail ....." + ex);

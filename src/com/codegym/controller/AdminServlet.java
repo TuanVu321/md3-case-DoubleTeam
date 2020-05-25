@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
@@ -244,7 +243,6 @@ public class AdminServlet extends HttpServlet {
 
     private void editPostreview(HttpServletRequest request, HttpServletResponse response) {
         int destination = Integer.parseInt(request.getParameter("destination"));
-        //int id_account = Integer.parseInt(request.getParameter("id_account"));
         String nameReview = request.getParameter("nameReview");
         String title = request.getParameter("title");
         String picture = request.getParameter("picture");
@@ -277,7 +275,7 @@ public class AdminServlet extends HttpServlet {
 
     private void showEditPostReview(HttpServletRequest request, HttpServletResponse response) {
         int id_review = Integer.parseInt(request.getParameter("id_review"));
-        String sql_query = "select id_destinations, id_account, name_review, titleposts, picture, content, pointevaluate, dateposts from c0220h1dbt.postsreview " +
+        String sql_query = "select id_destinations, id_account, name_review, titleposts, picture, content, pointevaluate from c0220h1dbt.postsreview " +
                                   "where id_review = ?;";
         try {
             Connection conn = databaseService.setCheckForeignKey();
@@ -297,7 +295,6 @@ public class AdminServlet extends HttpServlet {
                 String content = rs.getString("content");
                 int pointevaluate = rs.getInt("pointevaluate");
 
-                //oldReview = reviewServlet.createNewReview(id_destination, id_account, name_review, titleposts, content, picture, pointevaluate, utilDate);
                 oldReview = new Review(id_destination, id_account, name_review, titleposts, picture, content, pointevaluate);
             }
 

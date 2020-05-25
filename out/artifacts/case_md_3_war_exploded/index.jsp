@@ -24,19 +24,19 @@
 <body>
 <%
     session = request.getSession();
-    String fullname = (String)session.getAttribute("fullname");
-    String typeAccount = (String)session.getAttribute("typeAccountLogIn");
+    String fullname = (String) session.getAttribute("fullname");
+    String typeAccount = (String) session.getAttribute("typeAccountLogIn");
 %>
 <nav id="navigation" class="navbar navbar-expand-md navbar-light bg-primary sticky-top justify-content-left">
     <div class="container-fluid">
-        <a class="navbar-branch" id="logo" href="#">
+        <a class="navbar-branch" id="logo" href="/viewservlet">
             <img src="img/logoDBT2.png" height="40"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive">
             <samp class="navbar-toggler-icon"></samp>
         </button>
         <div class="collapse navbar-collapse  " id="navbarResponsive">
-            <div style="width: 350px; height: 40px; margin-right: 20px">
+            <div style="width: 300px; height: 40px; margin-right: 20px">
                 <form method="post" action="/search">
                     <div class="search-box input-group form-group">
                         <div class="input-group-prepend " style="height: 40px">
@@ -46,7 +46,8 @@
                                                                                               height="20"></button>
                             </span>
                         </div>
-                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..." type="text">
+                        <input name="inputName" class="form-control" placeholder="Tìm kiếm: Địa điểm, Lịch trình..."
+                               type="text">
                     </div>
                 </form>
             </div>
@@ -90,19 +91,28 @@
                     <%
                     } else {
                     %>
+                </li>
+                <li>
                     <p id="fullname" style="color: white; font-size: 19px"><span id="name"><%=fullname%></span><br/>
                         <%
                             if (typeAccount.equals("admin")) {
                         %>
-                        <a id="role" href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <a id="role"
+                           href="/admin_dashboard?action=showAccountsList&account=<%=fullname%>&role=<%=typeAccount%>"
+                           style="color: red; font-size: 17px"><%=typeAccount%>
+                        </a>
                         <%
                         } else {
                         %>
-                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>" style="color: red; font-size: 17px"><%=typeAccount%></a>
+                        <a id="role" href="/admin_dashboard?action=404Error&account=<%=fullname%>&role=<%=typeAccount%>"
+                           style="color: red; font-size: 17px"><%=typeAccount%>
+                        </a>
                         <%
                             }
                         %>
                     </p>
+                </li>
+                <li>
                     <a id="dangxuat" class="nav-link" style="color: white; font-size: 19px" href="/logout">Đăng Xuất</a>
                     <%
                         }
@@ -136,9 +146,10 @@
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">
                 <a href="/review?id=${getTop6.get(0).getId_review()}"> <img src="${getTop6.get(0).getPicture()}"
-                                             style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                                            style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="/review?id=${getTop6.get(0).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                    <a href="/review?id=${getTop6.get(0).getId_review()}"><h6 style="color: blue; width: 260px"
+                                                                              class="float-left">
                         ${getTop6.get(0).getName()}</h6></a>
                     <h6 class="float-right" style="margin-left: 5px">${getTop6.get(0).getStar()}</h6>
                     <img src="img/star.png"
@@ -146,17 +157,19 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(0).getDestinations()}</h6>
-                    <p style="width: 320px; height: 96px;
-                         white-space: nowrap;overflow: hidden ;word-break: break-word;
-                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(0).getTitle()}
+                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
+                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                        ${getTop6.get(0).getTitle()}
                         <a href="/review?id=${getTop6.get(0).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
             <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px">
                 <a href="/review?id=${getTop6.get(3).getId_review()}"> <img src="${getTop6.get(3).getPicture()}"
-                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                                            style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="/review?id=${getTop6.get(3).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                    <a href="/review?id=${getTop6.get(3).getId_review()}"><h6 style="color: blue; width: 260px"
+                                                                              class="float-left">
                         ${getTop6.get(3).getName()}</h6></a>
                     <h6 class="float-right" style="margin-left: 5px">${getTop6.get(3).getStar()}</h6>
                     <img src="img/star.png"
@@ -164,19 +177,21 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(3).getDestinations()}</h6>
-                    <p style="width: 320px; height: 96px;
-                         white-space: nowrap;overflow: hidden ;word-break: break-word;
-                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(3).getTitle()}
-                        <a href="/review?id=${getTop6.get(3).getId_review()}}">Xem thêm</a></p>
+                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
+                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                        ${getTop6.get(3).getTitle()}
+                        <a href="/review?id=${getTop6.get(3).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
         </div>
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">
                 <a href="/review?id=${getTop6.get(1).getId_review()}"> <img src="${getTop6.get(1).getPicture()}"
-                     style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                                            style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="/review?id=${getTop6.get(1).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                    <a href="/review?id=${getTop6.get(1).getId_review()}"><h6 style="color: blue; width: 260px"
+                                                                              class="float-left">
                         ${getTop6.get(1).getName()}</h6></a>
                     <h6 class="float-right" style="margin-left: 5px">${getTop6.get(1).getStar()}</h6>
                     <img src="img/star.png"
@@ -184,17 +199,19 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(1).getDestinations()}</h6>
-                    <p style="width: 320px; height: 96px;
-                         white-space: nowrap;overflow: hidden ;word-break: break-word;
-                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(1).getTitle()}
+                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
+                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                        ${getTop6.get(1).getTitle()}
                         <a href="/review?id=${getTop6.get(1).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
-            <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px" >
+            <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px">
                 <a href="/review?id=${getTop6.get(4).getId_review()}"> <img src="${getTop6.get(4).getPicture()}"
-                                                                     style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                                            style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="/review?id=${getTop6.get(4).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                    <a href="/review?id=${getTop6.get(4).getId_review()}"><h6 style="color: blue; width: 260px"
+                                                                              class="float-left">
                         ${getTop6.get(4).getName()}</h6></a>
                     <h6 class="float-right" style="margin-left: 5px">${getTop6.get(4).getStar()}</h6>
                     <img src="img/star.png"
@@ -202,9 +219,10 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(4).getDestinations()}</h6>
-                    <p style="width: 320px; height: 96px;
-                         white-space: nowrap;overflow: hidden ;word-break: break-word;
-                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(4).getTitle()}
+                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
+                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                        ${getTop6.get(4).getTitle()}
                         <a href="/review?id=${getTop6.get(4).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
@@ -212,9 +230,10 @@
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 380px">
                 <a href="/review?id=${getTop6.get(2).getId_review()}"> <img src="${getTop6.get(2).getPicture()}"
-                           style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                                            style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="/review?id=${getTop6.get(2).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                    <a href="/review?id=${getTop6.get(2).getId_review()}"><h6 style="color: blue; width: 260px"
+                                                                              class="float-left">
                         ${getTop6.get(2).getName()}</h6></a>
                     <h6 class="float-right" style="margin-left: 5px">${getTop6.get(2).getStar()}</h6>
                     <img src="img/star.png"
@@ -222,17 +241,19 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(2).getDestinations()}</h6>
-                    <p style="width: 320px; height: 96px;
-                         white-space: nowrap;overflow: hidden ;word-break: break-word;
-                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(2).getTitle()}
+                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
+                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                        ${getTop6.get(2).getTitle()}
                         <a href="/review?id=${getTop6.get(2).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
             <div class="col-md-12" style="background: white; height: 380px; margin-top: 40px">
                 <a href="/review?id=${getTop6.get(5).getId_review()}"> <img src="${getTop6.get(5).getPicture()}"
-                                             style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                                            style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="/review?id=${getTop6.get(5).getId_review()}"><h6 style="color: blue; width: 260px" class="float-left">
+                    <a href="/review?id=${getTop6.get(5).getId_review()}"><h6 style="color: blue; width: 260px"
+                                                                              class="float-left">
                         ${getTop6.get(5).getName()}</h6></a>
                     <h6 class="float-right" style="margin-left: 5px">${getTop6.get(5).getStar()}</h6>
                     <img src="img/star.png"
@@ -240,9 +261,10 @@
                 </div>
                 <div style="width: 100%" class="float-left">
                     <h6>${getTop6.get(5).getDestinations()}</h6>
-                    <p style="width: 320px; height: 96px;
-                         white-space: nowrap;overflow: hidden ;word-break: break-word;
-                         text-overflow: ellipsis; writing-mode: horizontal-tb ">${getTop6.get(5).getTitle()}
+                    <p class="text-justify" style="width: 320px; height: 100px; display: block; display: -webkit-box;
+                    max-width: 100%; margin: 0 auto; font-size: 14px; line-height: 1; -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis">
+                        ${getTop6.get(5).getTitle()}
                         <a href="/review?id=${getTop6.get(5).getId_review()}">Xem thêm</a></p>
                 </div>
             </div>
@@ -253,9 +275,9 @@
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 280px">
                 <a href="https://bitly.com.vn/AxXo9"><img src="https://bitly.com.vn/rVNml"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="https://bitly.com.vn/AxXo9"><h4>Khám Phá Hà Nội - Đà Nẵng</h4></a>
+                    <a href="https://bitly.com.vn/AxXo9"><h4>Hà Nội - Đà Nẵng</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"
@@ -268,9 +290,9 @@
             </div>
             <div class="col-md-12" style="background: white; height: 280px; margin-top: 40px">
                 <a href="https://bitly.com.vn/9mlA5"><img src="https://bitly.com.vn/uN7Il"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="https://bitly.com.vn/9mlA5"><h4>Khám Phá Nha Trang - Đà Lạt</h4></a>
+                    <a href="https://bitly.com.vn/9mlA5"><h4>Nha Trang - Đà Lạt</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"
@@ -285,9 +307,9 @@
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 280px">
                 <a href="https://bitly.com.vn/t0buC"><img src="https://bitly.com.vn/bUTI4"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="https://bitly.com.vn/t0buC"><h4>Khám Phá Hà Nội - Nha Trang</h4></a>
+                    <a href="https://bitly.com.vn/t0buC"><h4>Hà Nội - Nha Trang</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"
@@ -300,9 +322,9 @@
             </div>
             <div class="col-md-12" style="background: white; height: 280px; margin-top: 40px">
                 <a href="https://bitly.com.vn/AU2ug"><img src="https://bitly.com.vn/K6EaJ"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="https://bitly.com.vn/AU2ug"><h4>Khám Phá Hà Nội - Phú Yên</h4></a>
+                    <a href="https://bitly.com.vn/AU2ug"><h4>Hà Nội - Phú Yên</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"
@@ -317,9 +339,9 @@
         <div class="col-md-4 hot-review-tour">
             <div class="col-md-12" style="background: white; height: 280px">
                 <a href="https://bitly.com.vn/FcdqI"><img src="https://bitly.com.vn/rdeKb"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="https://bitly.com.vn/FcdqI"><h4>Khám Phá Hà Nội - Miền Tây</h4></a>
+                    <a href="https://bitly.com.vn/FcdqI"><h4>Hà Nội - Miền Tây</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png" style="width: 20px; height: 20px" class="float-left">
@@ -331,9 +353,9 @@
             </div>
             <div class="col-md-12" style="background: white; height: 280px; margin-top: 40px">
                 <a href="https://bitly.com.vn/gKLEI"><img src="https://bitly.com.vn/GHBuD"
-                                 style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
+                                                          style="width: 320px; height: 179px; border-radius: 5%; margin-top: 15px"></a>
                 <div style="width: 100%; margin-top: 10px">
-                    <a href="https://bitly.com.vn/gKLEI"><h4>Khám Phá Hà Nội - Phú Quốc</h4></a>
+                    <a href="https://bitly.com.vn/gKLEI"><h4>Hà Nội - Phú Quốc</h4></a>
                 </div>
                 <div>
                     <img src="img/money.png"

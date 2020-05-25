@@ -112,7 +112,9 @@
 </nav>
 <div class="container">
     <div class="formConfirm">
-        <h1 class="not-login">Bạn Chưa Đăng Nhập !!!</h1>
+        <h1 class="not-login">Bạn Chưa Đăng Nhập Nên không thể tham gia chức năng đánh giá sao bài viết !!!</h1>
+        <p>Click vào đường dẫn dưới đây để đăng nhập </p>
+        <a href="http://localhost:8080/login?action=signin">Trang Đăng Nhập</a>
     </div>
 </div>
 <div class="container-fluid" style="background: black; height: 500px; margin-top: 20px">

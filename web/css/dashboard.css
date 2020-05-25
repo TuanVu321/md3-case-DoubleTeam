@@ -1,6 +1,7 @@
 #contain-dashboard {
     width: 1300px;
     height: 500px;
+    margin-left: -90px;
 }
 
 #contain-switch table tr th, td {

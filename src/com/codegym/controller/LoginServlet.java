@@ -140,8 +140,10 @@ public class LoginServlet extends HttpServlet {
         try {
             RequestDispatcher dispatcher = null;
             String typeAccount = null;
+            int id_account = 0;
             if (inforUser != null) {
                 String typeAccount_sql = "select role from c0220h1dbt.account inner join c0220h1dbt.role using(id_role) where c0220h1dbt.account.username = ?";
+                String id_account_query = "select id_account from c0220h1dbt.account where c0220h1dbt.account.username = ?;";
                 Connection conn = databaseService.createConnection();
                 try {
                     PreparedStatement pstmt = conn.prepareStatement(typeAccount_sql);
@@ -150,6 +152,12 @@ public class LoginServlet extends HttpServlet {
                     while (rs.next()) {
                         typeAccount = rs.getString("role");
                     }
+                    pstmt = conn.prepareStatement(id_account_query);
+                    pstmt.setString(1, username);
+                    rs = pstmt.executeQuery();
+                    while (rs.next()) {
+                        id_account  = rs.getInt("id_account");
+                    }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -157,6 +165,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("usernameLogIn", username);
                 session.setAttribute("typeAccountLogIn", typeAccount);
                 session.setAttribute("fullname", fullnameUser);
+                session.setAttribute("id_account", id_account);
                 request.setAttribute("fullnameUser", fullnameUser);
                 request.setAttribute("typeAccount", inforUser.get(1));
                 dispatcher = request.getRequestDispatcher("view/welcome-to.jsp?action=welcome-to&account=" + fullnameUser + "&typeAccount=" + inforUser.get(1));

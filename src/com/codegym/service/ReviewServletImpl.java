@@ -20,7 +20,7 @@ public class ReviewServletImpl implements ReviewServlet {
             ") values (?,?,?,?,?,?,?,?);";
 
     @Override
-    public Review createNewReview(int destination, int id_account, String name_review, String titleposts, String content, String picture, int pointevalue, java.util.Date dateposts) {
+    public Review createNewReview(int destination, int id_account, String name_review, String titleposts, String picture, String content, int pointevalue, java.util.Date dateposts) {
         Connection conn = databaseService.setCheckForeignKey();
         Review review = null;
         try {
